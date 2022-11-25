@@ -3,13 +3,21 @@ import { createContext, useContext } from 'react';
 import { ExampleStore } from '../modules/example/ExampleStore';
 
 class RootStore {
-  exampleStore = new ExampleStore();
-  userStore = new UserStore();
+  exampleStore: ExampleStore;
+  userStore: UserStore;
 
   constructor() {
     this.exampleStore = new ExampleStore();
     this.userStore = new UserStore();
   }
+
+  sync = async () => {
+    await Promise.all(
+      Object.values(this).map(store => {
+        return store?.sync ? store?.sync() : Promise.resolve();
+      }),
+    );
+  };
 }
 
 export const rootStore = new RootStore();

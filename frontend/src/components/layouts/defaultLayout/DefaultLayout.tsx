@@ -1,23 +1,52 @@
 import { ActionIcon, Container, createStyles, Group, Header as MantineHeader, Button } from '@mantine/core';
-import { BrandReact, Checklist } from 'tabler-icons-react';
+import { BrandReact } from 'tabler-icons-react';
 import { ColorSchemeButton } from '../../ColorSchemeButton';
 import { useRootStore } from '../../../base/RootStore';
-import { Link, useNavigate } from 'react-router-dom';
-import { NavLinks, Routes } from '../../../routes/routes';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { UserNavLinks, Routes, NavLinkModel, LeadNavLinks, StudentNavLinks } from '../../../routes/routes';
 import { observer } from 'mobx-react-lite';
 import { DesktopNavItem } from './components/DesktopNavItem';
 import { useAllMQ } from '../../../base/hooks/useAllMQ';
 import { MobileNavItem } from './components/MobileNavItem';
+import { useEffect, useState } from 'react';
+import { LeadUsers, UserRoles, UsualUsers } from '../../../modules/user/types/UserTypes';
 
 const DefaultLayout = observer((props: { children: JSX.Element }) => {
   const { userStore } = useRootStore();
   const { classes } = useStyles();
 
+  const [navLinks, setNavLinks] = useState<NavLinkModel[] | undefined>();
+
+  const location = useLocation();
   const navigate = useNavigate();
 
   const { isMD } = useAllMQ();
 
+  //Effects
+  useEffect(() => {
+    handleGetNavLinks();
+  }, [userStore.userInfo]);
+
+  console.log(userStore.userInfo);
+  console.log(navLinks);
+
   //Handlers
+  const handleGetNavLinks = () => {
+    switch (userStore.userInfo?.role as string) {
+      case UsualUsers.BACKEND_USER:
+      case UsualUsers.FRONTEND_USER:
+        setNavLinks(UserNavLinks);
+        break;
+      case LeadUsers.BACKEND_LEAD:
+      case LeadUsers.FRONTEND_LEAD:
+        setNavLinks(LeadNavLinks);
+        break;
+      case UserRoles.STUDENT:
+        setNavLinks(StudentNavLinks);
+        break;
+    }
+  };
+
   const handleUserButton = () => {
     if (userStore.userInfo) {
       navigate(Routes.leadProfile);
@@ -51,7 +80,7 @@ const DefaultLayout = observer((props: { children: JSX.Element }) => {
   const renderDesktopNavList = () => {
     return (
       <Group align={'center'} pt={2} pl={8}>
-        {NavLinks.map(link => {
+        {navLinks?.map(link => {
           return <DesktopNavItem link={link} />;
         })}
       </Group>
@@ -67,12 +96,12 @@ const DefaultLayout = observer((props: { children: JSX.Element }) => {
         sx={{ borderTop: '1px solid #868E96 ' }}
       >
         <Group grow pt={5}>
-          {NavLinks.map(link => {
-            return <MobileNavItem link={link} />;
+          {navLinks?.map(link => {
+            return <MobileNavItem key={link.title} link={link} />;
           })}
           <Link
             style={{ position: 'absolute', height: '75px', width: '75px', bottom: '3px', right: '7vw' }}
-            to={Routes.main}
+            to={navLinks?.[-1]?.path || Routes.auth}
           >
             <ActionIcon
               color={'indigo'}
@@ -80,7 +109,7 @@ const DefaultLayout = observer((props: { children: JSX.Element }) => {
               sx={{ position: 'absolute', bottom: 12, right: 12, borderRadius: '100%' }}
               variant="filled"
             >
-              <Checklist size={35} />
+              {navLinks?.[-1]?.icon}
             </ActionIcon>
           </Link>
         </Group>
@@ -88,9 +117,13 @@ const DefaultLayout = observer((props: { children: JSX.Element }) => {
     );
   };
 
+  const renderMenu = () => {
+    return <>{isMD ? renderDesktopMenu() : renderMobileMenu()}</>;
+  };
+
   return (
     <>
-      {isMD ? renderDesktopMenu() : renderMobileMenu()}
+      {renderMenu()}
       <Container size={'xl'} pt={70}>
         {props.children}
       </Container>

@@ -4,10 +4,10 @@ import { useNavigate } from 'react-router-dom';
 import { auth } from '../../base/firebase/firebase-config';
 import { useRootStore } from '../../base/RootStore';
 import { Routes } from '../../routes/routes';
-import { Button } from '@mantine/core';
-import DefaultLayout from '../../components/layouts/defaultLayout/DefaultLayout';
 import { observer } from 'mobx-react-lite';
 import { ProfileLayout } from './components/ProfileLayout';
+import { LogoutButton } from './components/LogoutButton';
+
 
 export const UserProfileScreen = observer(() => {
   const { exampleStore, userStore } = useRootStore();
@@ -30,7 +30,7 @@ export const UserProfileScreen = observer(() => {
   //Renders
   return (
     <ProfileLayout firstname={'Name'} lastname={'Surname'} role={'Role'} teamLead={'Team Lead'}>
-      <Button onClick={handleLogout}>Logout</Button>
+      <LogoutButton />
     </ProfileLayout>
   );
 });
