@@ -1,8 +1,8 @@
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Button, LoadingOverlay, Space, TextInput } from '@mantine/core';
-import { Lock, Mail } from 'tabler-icons-react';
+import { Button, Divider, Group, LoadingOverlay, Space, Text, TextInput } from '@mantine/core';
+import { DeviceAnalytics, Lock, Mail, School, User } from 'tabler-icons-react';
 import { auth } from '../../../base/firebase/firebase-config';
 import { useRootStore } from '../../../base/RootStore';
 import { Routes } from '../../../routes/routes';
@@ -24,6 +24,38 @@ export const LoginComponent = () => {
         navigate(Routes.checkRole);
       }
     });
+  };
+
+  //Renders
+
+  const renderAuthButtons = () => {
+    return (
+      <>
+        <Text>Отдел Frontend</Text>
+        <Group grow>
+          <Button size={'lg'} leftIcon={<User />}>
+            Работник
+          </Button>
+          <Button size={'lg'} leftIcon={<DeviceAnalytics />}>
+            Тимлид
+          </Button>
+        </Group>
+
+        <Text>Отдел Backend</Text>
+        <Group grow>
+          <Button size={'lg'} leftIcon={<User />}>
+            Работник
+          </Button>
+          <Button size={'lg'} leftIcon={<DeviceAnalytics />}>
+            Тимлид
+          </Button>
+        </Group>
+
+        <Button my={16} fullWidth leftIcon={<School />}>
+          Авторизоваться как студент
+        </Button>
+      </>
+    );
   };
 
   return (
@@ -49,10 +81,13 @@ export const LoginComponent = () => {
         }}
       />
       <Space h={'xl'} />
-      <Button size={'lg'} fullWidth onClick={login}>
+      <Button fullWidth onClick={login}>
         Вход
       </Button>
       {error?.message}
+      <Divider py={24} my={'xl'} label={<Text fz={'xl'}>или</Text>} labelPosition={'center'} />
+
+      {renderAuthButtons()}
     </>
   );
 };

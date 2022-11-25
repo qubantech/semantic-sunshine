@@ -1,16 +1,29 @@
 import { createBrowserRouter } from 'react-router-dom';
 import { AuthScreen } from '../screens/auth/AuthScreen';
 import { CheckRoleScreen } from '../screens/auth/modules/CheckRoleScreen';
-import { ProfileScreen } from '../screens/profile/ProfileScreen';
+import { StudentProfileScreen } from '../screens/profile/StudentProfileScreen';
 import React from 'react';
 import { MainScreen } from '../screens/main/MainScreen';
 import { InfoSquare, Mailbox } from 'tabler-icons-react';
+import {LeadProfileScreen} from "../screens/profile/LeadProfileScreen";
+import {UserProfileScreen} from "../screens/profile/UserProfileScreen";
+import {LeadDashboardScreen} from "../screens/dashboard/LeadDashboardScreen";
+import {StudentDashboardScreen} from "../screens/dashboard/StudentDashboardScreen";
+import {UserDashboardScreen} from "../screens/dashboard/UserDashboardScreen";
 
 export const Routes = {
   main: '/',
+  //auth
   auth: '/auth',
-  profile: '/profile',
   checkRole: '/check-role',
+  //profile
+  leadProfile: '/lead/profile',
+  studentProfile: '/student/profile',
+  userProfile: '/user/profile',
+  //dashboard (main)
+  leadDashboard: '/lead/dashboard',
+  studentDashboard: '/student/dashboard',
+  userDashboard: '/user/dashboard',
 };
 
 export const NavLinks: NavLinkModel[] = [
@@ -44,9 +57,31 @@ export const router = createBrowserRouter([
     path: Routes.checkRole,
     element: <CheckRoleScreen />,
   },
+  //profile
   {
-    path: Routes.profile,
-    element: <ProfileScreen />,
+    path: Routes.leadProfile,
+    element: <LeadProfileScreen />,
+  },
+  {
+    path: Routes.studentProfile,
+    element: <StudentProfileScreen />,
+  },
+  {
+    path: Routes.userProfile,
+    element: <UserProfileScreen/>,
+  },
+  //dashboard (main)
+  {
+    path: Routes.leadDashboard,
+    element: <LeadDashboardScreen />,
+  },
+  {
+    path: Routes.studentDashboard,
+    element: <StudentDashboardScreen />,
+  },
+  {
+    path: Routes.userDashboard,
+    element: <UserDashboardScreen/>,
   },
 ]);
 

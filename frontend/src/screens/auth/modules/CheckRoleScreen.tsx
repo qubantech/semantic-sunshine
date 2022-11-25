@@ -19,11 +19,14 @@ export const CheckRoleScreen: React.FC<ICheckRoleScreenProps> = () => {
     if (userInfo) {
       userStore.setUserInfo(userInfo.watchedObject);
       switch (userInfo.watchedObject?.role) {
-        case 'USER':
-          navigate(Routes.profile);
-          return;
-        default:
-          navigate(Routes.profile);
+        case "STUDENT":
+          navigate(Routes.studentDashboard);
+          break;
+        case "FRONTEND_USER": case "BACKEND_USER":
+          navigate(Routes.userDashboard)
+          break;
+        case "FRONTEND_LEAD": case "BACKEND_LEAD":
+          navigate(Routes.leadDashboard)
       }
     }
   }, [userInfo]);
@@ -31,7 +34,7 @@ export const CheckRoleScreen: React.FC<ICheckRoleScreenProps> = () => {
   //Renders
   return (
     <>
-      <LoadingOverlay visible={true} />
+      <LoadingOverlay visible={true} title={"Авторизация..."} />
     </>
   );
 };

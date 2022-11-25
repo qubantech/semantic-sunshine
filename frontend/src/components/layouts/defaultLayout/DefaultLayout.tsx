@@ -20,7 +20,7 @@ const DefaultLayout = observer((props: { children: JSX.Element }) => {
   //Handlers
   const handleUserButton = () => {
     if (userStore.userInfo) {
-      navigate(Routes.profile);
+      navigate(Routes.leadProfile);
     } else {
       navigate(Routes.auth);
     }
@@ -39,7 +39,7 @@ const DefaultLayout = observer((props: { children: JSX.Element }) => {
           </Group>
           <Group position={'right'}>
             <Button variant={'subtle'} onClick={handleUserButton}>
-              {userStore.userInfo ? userStore.userInfo.lastname : 'Вход'}
+              {userStore.userInfo ? userStore.userInfo?.lastName : 'Вход'}
             </Button>
             <ColorSchemeButton />
           </Group>
