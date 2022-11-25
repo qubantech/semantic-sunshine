@@ -1,15 +1,8 @@
-import React from 'react'
+import React from 'react';
 
 interface ILeadProfileScreenProps {}
 
 export const LeadProfileScreen: React.FC<ILeadProfileScreenProps> = () => {
- 
   //Render
-  return (
-    <div>
-      
-    </div>
-  )
-
-
-}
+  return <div></div>;
+};
