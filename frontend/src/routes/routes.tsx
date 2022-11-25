@@ -28,14 +28,14 @@ export const Routes = {
 
 export const UserNavLinks: NavLinkModel[] = [
   {
-    path: Routes.userProfile,
-    title: 'Профиль',
-    icon: <MoodSmileBeam color={'#868E96'} />,
-  },
-  {
     path: Routes.userDashboard,
     title: 'Метрики',
     icon: <ChartBar color={'#868E96'} />,
+  },
+  {
+    path: Routes.userProfile,
+    title: 'Профиль',
+    icon: <MoodSmileBeam color={'#868E96'} />,
   },
   {
     path: Routes.userDashboard,
@@ -46,14 +46,14 @@ export const UserNavLinks: NavLinkModel[] = [
 
 export const LeadNavLinks: NavLinkModel[] = [
   {
-    path: Routes.leadProfile,
-    title: 'Профиль',
-    icon: <MoodSmileBeam color={'#868E96'} />,
-  },
-  {
     path: Routes.leadDashboard,
     title: 'Ревью',
     icon: <ChartBar color={'#868E96'} />,
+  },
+  {
+    path: Routes.leadProfile,
+    title: 'Профиль',
+    icon: <MoodSmileBeam color={'#868E96'} />,
   },
 ];
 

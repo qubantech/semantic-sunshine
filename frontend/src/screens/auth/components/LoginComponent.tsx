@@ -67,7 +67,7 @@ export const LoginComponent = () => {
   const renderAuthButtons = () => {
     return (
       <>
-        <Text fz={'lg'} pb={8}>
+        <Text pt={8} fz={'lg'} pb={8}>
           Отдел Frontend
         </Text>
         <Group grow>
