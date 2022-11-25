@@ -6,8 +6,7 @@ import { useRootStore } from '../../base/RootStore';
 import { Routes } from '../../routes/routes';
 import { observer } from 'mobx-react-lite';
 import { ProfileLayout } from './components/ProfileLayout';
-import { LogoutButton } from './components/LogoutButton';
-
+import { Text } from '@mantine/core';
 
 export const UserProfileScreen = observer(() => {
   const { exampleStore, userStore } = useRootStore();
@@ -29,8 +28,8 @@ export const UserProfileScreen = observer(() => {
 
   //Renders
   return (
-    <ProfileLayout firstname={'Name'} lastname={'Surname'} role={'Role'} teamLead={'Team Lead'}>
-      <LogoutButton />
+    <ProfileLayout firstname={'Имя'} lastname={'Фамилия'} role={'Роль'} teamLead={'Тим Лид'}>
+      <Text>yhhh</Text>
     </ProfileLayout>
   );
 });

@@ -39,7 +39,7 @@ export const UserNavLinks: NavLinkModel[] = [
   },
   {
     path: Routes.userDashboard,
-    title: 'Новая анкета',
+    title: '',
     icon: <Checklist size={35} />,
   },
 ];
