@@ -32,7 +32,7 @@ const useStyles = createStyles(theme => ({
   linkLabel: {
     fontWeight: 600,
     textDecoration: 'none',
-    color: theme.colorScheme === 'dark' ? theme.colors.gray[0] : theme.colors.gray[6],
+    color: theme.colorScheme === 'dark' ? theme.colors.gray[6] : theme.colors.gray[6],
   },
   link: {
     color: 'inherit',
