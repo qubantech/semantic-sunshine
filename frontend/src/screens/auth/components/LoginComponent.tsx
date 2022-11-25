@@ -31,27 +31,25 @@ export const LoginComponent = () => {
   const renderAuthButtons = () => {
     return (
       <>
-        <Text>Отдел Frontend</Text>
+        <Text fz={'lg'} pb={8}>
+          Отдел Frontend
+        </Text>
         <Group grow>
-          <Button size={'lg'} leftIcon={<User />}>
-            Работник
-          </Button>
-          <Button size={'lg'} leftIcon={<DeviceAnalytics />}>
-            Тимлид
-          </Button>
+          <Button leftIcon={<User />}>Работник</Button>
+          <Button leftIcon={<DeviceAnalytics />}>Тимлид</Button>
         </Group>
 
-        <Text>Отдел Backend</Text>
+        <Text fz={'lg'} pt={32} pb={8}>
+          Отдел Backend
+        </Text>
         <Group grow>
-          <Button size={'lg'} leftIcon={<User />}>
-            Работник
-          </Button>
-          <Button size={'lg'} leftIcon={<DeviceAnalytics />}>
-            Тимлид
-          </Button>
+          <Button leftIcon={<User />}>Работник</Button>
+          <Button leftIcon={<DeviceAnalytics />}>Тимлид</Button>
         </Group>
 
-        <Button my={16} fullWidth leftIcon={<School />}>
+        <Divider py={28} label={<Text fz={'lg'}>или</Text>} labelPosition={'center'} />
+
+        <Button fullWidth leftIcon={<School />}>
           Авторизоваться как студент
         </Button>
       </>
@@ -61,7 +59,8 @@ export const LoginComponent = () => {
   return (
     <>
       {loading && <LoadingOverlay visible={true} />}
-      <TextInput
+      {/*реальная авторизация, честно*/}
+      {/*<TextInput
         variant={'filled'}
         size={'lg'}
         icon={<Mail />}
@@ -83,9 +82,8 @@ export const LoginComponent = () => {
       <Space h={'xl'} />
       <Button fullWidth onClick={login}>
         Вход
-      </Button>
+      </Button>*/}
       {error?.message}
-      <Divider py={24} my={'xl'} label={<Text fz={'xl'}>или</Text>} labelPosition={'center'} />
 
       {renderAuthButtons()}
     </>
