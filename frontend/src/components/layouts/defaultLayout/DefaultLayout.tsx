@@ -91,7 +91,7 @@ const DefaultLayout = observer((props: { children: JSX.Element }) => {
         height={60}
         fixed={true}
         position={{ bottom: -1, left: 0, right: 0 }}
-        sx={{ borderTop: '2px solid #D0D0D0' }}
+        sx={{ borderTop: '1px solid #868E96 ' }}
       >
         <Group grow pt={5}>
           {navLinks?.map(link => {
