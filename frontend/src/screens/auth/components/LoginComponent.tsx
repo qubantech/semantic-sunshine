@@ -30,7 +30,7 @@ export const LoginComponent = () => {
     <>
       {loading && <LoadingOverlay visible={true} />}
       <TextInput
-        variant={'filled'}
+        variant={'default'}
         size={'lg'}
         icon={<Mail />}
         placeholder="Электронная почта"
@@ -40,7 +40,7 @@ export const LoginComponent = () => {
       />
       <Space h={'sm'} />
       <TextInput
-        variant={'filled'}
+        variant={'default'}
         size={'lg'}
         icon={<Lock />}
         placeholder="Пароль"
