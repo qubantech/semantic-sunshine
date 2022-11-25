@@ -7,19 +7,36 @@ import { Routes } from '../../routes/routes';
 import { observer } from 'mobx-react-lite';
 import { ProfileLayout } from './components/ProfileLayout';
 import { Group, Text } from '@mantine/core';
+import { UserRoles } from '../../modules/user/types/UserTypes';
+import { LeadUpdates, UpdateStatus } from './components/LeadUpdates';
 
-const updatesCards = [
+const frontendUpdatesCards = [
   {
-    title: '',
-    description: '',
-    date: '',
-    status: '',
+    title: 'Новая версия React',
+    description: 'Вышла новая версия React, просьба ознакомиться.',
+    date: '24.11.2022',
+    status: 'warning',
   },
   {
-    title: '',
-    description: '',
-    date: '',
-    status: '',
+    title: 'Новый сериализатор',
+    description: 'Планируется интеграция новой модели сериализатора, просьба изучить, ссылка в источнике',
+    date: '10.11.2022',
+    status: 'danger',
+  },
+];
+
+const backendUpdatesCards = [
+  {
+    title: 'Новая версия NodeJS',
+    description: 'Вышла новая версия NodeJS, просьба ознакомиться.',
+    date: '24.11.2022',
+    status: 'warning',
+  },
+  {
+    title: 'Новый сериализатор',
+    description: 'Планируется интеграция новой модели сериализатора, просьба изучить, ссылка в источнике',
+    date: '10.11.2022',
+    status: 'danger',
   },
 ];
 
@@ -43,12 +60,44 @@ export const UserProfileScreen = observer(() => {
 
   //Renders
   return (
-    <ProfileLayout firstname={'Имя'} lastname={'Фамилия'} role={'Роль'} teamLead={'Тим Лид'}>
+    <ProfileLayout
+      firstname={userStore.userInfo?.firstName || null}
+      lastname={userStore.userInfo?.lastName || null}
+      role={userStore.userInfo?.roleDesc || null}
+      teamLead={userStore.userInfo?.teamLead || null}
+    >
       <>
-        <Text fz={'lg'} fw={'600'} mt={30}>
+        <Text fz={'lg'} fw={'600'} my={30}>
           Апдейты
         </Text>
-        <Group>{updatesCards.map(card => {})}</Group>
+        <Group>
+          {userStore.userInfo?.role === UserRoles.FRONTEND_USER
+            ? frontendUpdatesCards.map(card => {
+                return (
+                  <LeadUpdates
+                    key={card.title}
+                    title={card.title}
+                    description={card.description}
+                    date={card.date}
+                    status={card.status as UpdateStatus}
+                  />
+                );
+              })
+            : backendUpdatesCards.map(card => {
+                return (
+                  <LeadUpdates
+                    key={card.title}
+                    title={card.title}
+                    description={card.description}
+                    date={card.date}
+                    status={card.status as UpdateStatus}
+                  />
+                );
+              })}
+        </Group>
+        <Text fz={'lg'} fw={'600'} my={30}>
+          Оцененные анкеты
+        </Text>
       </>
     </ProfileLayout>
   );

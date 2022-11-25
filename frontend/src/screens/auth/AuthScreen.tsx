@@ -8,7 +8,7 @@ interface IAuthScreenProps {}
 export const AuthScreen: React.FC<IAuthScreenProps> = () => {
   //Render
   return (
-    <Container size={'md'}>
+    <Container size={'md'} sx={{ height: '100vh' }}>
       <LoginComponent />
     </Container>
   );

@@ -4,12 +4,13 @@ import DefaultLayout from '../../../components/layouts/defaultLayout/DefaultLayo
 import { observer } from 'mobx-react-lite';
 import { LogoutButton } from './LogoutButton';
 import { ColorSchemeButton } from '../../../components/ColorSchemeButton';
+import { useRootStore } from '../../../base/RootStore';
 
 interface IProfileProps {
   children: JSX.Element;
-  firstname: string;
-  lastname: string;
-  role: string;
+  firstname: string | null;
+  lastname: string | null;
+  role: string | null;
   teamLead: string | null;
 }
 
@@ -28,15 +29,21 @@ export const ProfileLayout: React.FC<IProfileProps> = observer(props => {
           <Group align={'start'}>
             <Avatar radius="xl" size={'lg'} variant={'outline'} />
             <Stack spacing={0}>
-              <Text tt="uppercase" fw={500}>
+              <Text tt="uppercase" fw={600}>
                 {props.firstname}
               </Text>
-              <Text tt="uppercase" fw={500}>
+              <Text tt="uppercase" fw={600}>
                 {props.lastname}
               </Text>
               <Stack spacing={0} mt={15}>
-                <Text fz={'sm'}>Позиция: {props.role}</Text>
-                {props.teamLead && <Text fz={'sm'}>Тимлид: {props.teamLead}</Text>}
+                <Text fz={'sm'}>
+                  <span style={{ fontWeight: 600 }}>Позиция:</span> {props.role}
+                </Text>
+                {props.teamLead && (
+                  <Text fz={'sm'}>
+                    <span style={{ fontWeight: 600 }}>Тимлид:</span> {props.teamLead}
+                  </Text>
+                )}
               </Stack>
             </Stack>
           </Group>

@@ -1,5 +1,11 @@
 import React from 'react';
-import { Card, Group, Text } from '@mantine/core';
+import { Card, Group, Text, ThemeIcon } from '@mantine/core';
+import { CircleDot } from 'tabler-icons-react';
+
+export enum UpdateStatus {
+  DANGER = 'danger',
+  WARNING = 'warning',
+}
 
 interface ILeadUpdatesProps {
   title: string;
@@ -13,9 +19,14 @@ export const LeadUpdates: React.FC<ILeadUpdatesProps> = props => {
   return (
     <Card shadow={'sm'} p={'lg'} radius={'md'} withBorder>
       <Group position={'apart'}>
-        <Text fz={'sm'} fw={600}>
-          {props.title}
-        </Text>
+        <Group>
+          <ThemeIcon variant={'light'} radius={'xl'} color={props.status === 'danger' ? 'red' : 'yellow'}>
+            <CircleDot size={15} />
+          </ThemeIcon>
+          <Text fz={'md'} fw={600}>
+            {props.title}
+          </Text>
+        </Group>
         <Text fz={'xs'} fw={600}>
           {props.date}
         </Text>
