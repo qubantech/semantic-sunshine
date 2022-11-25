@@ -6,7 +6,22 @@ import { useRootStore } from '../../base/RootStore';
 import { Routes } from '../../routes/routes';
 import { observer } from 'mobx-react-lite';
 import { ProfileLayout } from './components/ProfileLayout';
-import { Text } from '@mantine/core';
+import { Group, Text } from '@mantine/core';
+
+const updatesCards = [
+  {
+    title: '',
+    description: '',
+    date: '',
+    status: '',
+  },
+  {
+    title: '',
+    description: '',
+    date: '',
+    status: '',
+  },
+];
 
 export const UserProfileScreen = observer(() => {
   const { exampleStore, userStore } = useRootStore();
@@ -29,7 +44,12 @@ export const UserProfileScreen = observer(() => {
   //Renders
   return (
     <ProfileLayout firstname={'Имя'} lastname={'Фамилия'} role={'Роль'} teamLead={'Тим Лид'}>
-      <Text>yhhh</Text>
+      <>
+        <Text fz={'lg'} fw={'600'} mt={30}>
+          Апдейты
+        </Text>
+        <Group>{updatesCards.map(card => {})}</Group>
+      </>
     </ProfileLayout>
   );
 });

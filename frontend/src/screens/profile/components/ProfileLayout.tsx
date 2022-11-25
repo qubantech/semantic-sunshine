@@ -3,6 +3,7 @@ import React from 'react';
 import DefaultLayout from '../../../components/layouts/defaultLayout/DefaultLayout';
 import { observer } from 'mobx-react-lite';
 import { LogoutButton } from './LogoutButton';
+import { ColorSchemeButton } from '../../../components/ColorSchemeButton';
 
 interface IProfileProps {
   children: JSX.Element;
@@ -17,7 +18,10 @@ export const ProfileLayout: React.FC<IProfileProps> = observer(props => {
   return (
     <DefaultLayout>
       <>
-        <Group position={'right'} mb={10}>
+        <Group position={'apart'} mb={10}>
+          <div style={{ paddingLeft: 0 }}>
+            <ColorSchemeButton />
+          </div>
           <LogoutButton />
         </Group>
         <Card shadow={'sm'} p={'lg'} radius={'md'} withBorder>
