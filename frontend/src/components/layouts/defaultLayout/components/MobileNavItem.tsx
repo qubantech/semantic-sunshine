@@ -15,9 +15,9 @@ export const MobileNavItem: React.FC<INavLinkProps> = props => {
 
   //Render
   return (
-    <ActionIcon size={55}>
+    <ActionIcon size={48}>
       <Link to={link.path}>
-        <Stack className={classes.link} align={'center'} spacing={4}>
+        <Stack className={classes.link} align={'center'} spacing={0}>
           {link.icon}
           <Text fz={'sm'} className={classes.linkLabel}>
             {link.title}
@@ -30,8 +30,9 @@ export const MobileNavItem: React.FC<INavLinkProps> = props => {
 
 const useStyles = createStyles(theme => ({
   linkLabel: {
+    fontWeight: 600,
     textDecoration: 'none',
-    color: theme.colorScheme === 'dark' ? theme.colors.gray[0] : theme.colors.dark[9],
+    color: theme.colorScheme === 'dark' ? theme.colors.gray[0] : theme.colors.gray[6],
   },
   link: {
     color: 'inherit',

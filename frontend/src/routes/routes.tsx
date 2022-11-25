@@ -4,12 +4,12 @@ import { CheckRoleScreen } from '../screens/auth/modules/CheckRoleScreen';
 import { StudentProfileScreen } from '../screens/profile/StudentProfileScreen';
 import React from 'react';
 import { MainScreen } from '../screens/main/MainScreen';
-import { InfoSquare, Mailbox } from 'tabler-icons-react';
-import {LeadProfileScreen} from "../screens/profile/LeadProfileScreen";
-import {UserProfileScreen} from "../screens/profile/UserProfileScreen";
-import {LeadDashboardScreen} from "../screens/dashboard/LeadDashboardScreen";
-import {StudentDashboardScreen} from "../screens/dashboard/StudentDashboardScreen";
-import {UserDashboardScreen} from "../screens/dashboard/UserDashboardScreen";
+import { ChartBar, MoodSmileBeam } from 'tabler-icons-react';
+import { LeadProfileScreen } from '../screens/profile/LeadProfileScreen';
+import { UserProfileScreen } from '../screens/profile/UserProfileScreen';
+import { LeadDashboardScreen } from '../screens/dashboard/LeadDashboardScreen';
+import { StudentDashboardScreen } from '../screens/dashboard/StudentDashboardScreen';
+import { UserDashboardScreen } from '../screens/dashboard/UserDashboardScreen';
 
 export const Routes = {
   main: '/',
@@ -26,21 +26,42 @@ export const Routes = {
   userDashboard: '/user/dashboard',
 };
 
-export const NavLinks: NavLinkModel[] = [
+export const UserNavLinks: NavLinkModel[] = [
   {
-    path: '/link1',
-    title: 'Ссылка 1',
-    icon: <Mailbox />,
+    path: Routes.userProfile,
+    title: 'Профиль',
+    icon: <MoodSmileBeam color={'#868E96'} />,
   },
   {
-    path: '/link2',
-    title: 'Ссылка 2',
-    icon: <InfoSquare />,
+    path: Routes.userDashboard,
+    title: 'Метрики',
+    icon: <ChartBar color={'#868E96'} />,
+  },
+];
+
+export const LeadNavLinks: NavLinkModel[] = [
+  {
+    path: Routes.userProfile,
+    title: 'Профиль',
+    icon: <MoodSmileBeam color={'#868E96'} />,
   },
   {
-    path: '/link2',
-    title: 'Ссылка 3',
-    icon: <InfoSquare />,
+    path: Routes.userDashboard,
+    title: 'Метрики',
+    icon: <ChartBar color={'#868E96'} />,
+  },
+];
+
+export const StudentNavLinks: NavLinkModel[] = [
+  {
+    path: Routes.userProfile,
+    title: 'Профиль',
+    icon: <MoodSmileBeam color={'#868E96'} />,
+  },
+  {
+    path: Routes.userDashboard,
+    title: 'Метрики',
+    icon: <ChartBar color={'#868E96'} />,
   },
 ];
 
@@ -68,7 +89,7 @@ export const router = createBrowserRouter([
   },
   {
     path: Routes.userProfile,
-    element: <UserProfileScreen/>,
+    element: <UserProfileScreen />,
   },
   //dashboard (main)
   {
@@ -81,7 +102,7 @@ export const router = createBrowserRouter([
   },
   {
     path: Routes.userDashboard,
-    element: <UserDashboardScreen/>,
+    element: <UserDashboardScreen />,
   },
 ]);
 

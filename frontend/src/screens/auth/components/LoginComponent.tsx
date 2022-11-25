@@ -12,22 +12,58 @@ export const LoginComponent = () => {
 
   const [signInWithEmailAndPassword, user, loading, error] = useSignInWithEmailAndPassword(auth);
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  /*  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');*/
 
   const navigate = useNavigate();
 
-  const login = () => {
+  /* const login = () => {
     signInWithEmailAndPassword(email, password).then(resp => {
       if (resp?.user?.uid) {
         userStore.setUserUid(resp.user.uid);
         navigate(Routes.checkRole);
       }
     });
+  };*/
+
+  const handleSaveLoginInfo = (resp: any) => {
+    if (resp?.user?.uid) {
+      userStore.setUserUid(resp.user.uid);
+      navigate(Routes.checkRole);
+    }
+  };
+
+  const handleFrontUserAuth = () => {
+    signInWithEmailAndPassword('frontend@mail.ru', '123456').then(resp => {
+      handleSaveLoginInfo(resp);
+    });
+  };
+
+  const handleFrontLeadAuth = () => {
+    signInWithEmailAndPassword('frontendlead@mail.ru', '123456').then(resp => {
+      handleSaveLoginInfo(resp);
+    });
+  };
+
+  const handleBackUserAuth = () => {
+    signInWithEmailAndPassword('backend@mail.ru', '123456').then(resp => {
+      handleSaveLoginInfo(resp);
+    });
+  };
+
+  const handleBackLeadAuth = () => {
+    signInWithEmailAndPassword('backendLead@mail.ru', '123456').then(resp => {
+      handleSaveLoginInfo(resp);
+    });
+  };
+
+  const handleStudentAuth = () => {
+    signInWithEmailAndPassword('student@mail.ru', '123456').then(resp => {
+      handleSaveLoginInfo(resp);
+    });
   };
 
   //Renders
-
   const renderAuthButtons = () => {
     return (
       <>
@@ -35,21 +71,29 @@ export const LoginComponent = () => {
           Отдел Frontend
         </Text>
         <Group grow>
-          <Button leftIcon={<User />}>Работник</Button>
-          <Button leftIcon={<DeviceAnalytics />}>Тимлид</Button>
+          <Button leftIcon={<User />} onClick={handleFrontUserAuth}>
+            Работник
+          </Button>
+          <Button leftIcon={<DeviceAnalytics />} onClick={handleFrontLeadAuth}>
+            Тимлид
+          </Button>
         </Group>
 
         <Text fz={'lg'} pt={32} pb={8}>
           Отдел Backend
         </Text>
         <Group grow>
-          <Button leftIcon={<User />}>Работник</Button>
-          <Button leftIcon={<DeviceAnalytics />}>Тимлид</Button>
+          <Button leftIcon={<User />} onClick={handleBackUserAuth}>
+            Работник
+          </Button>
+          <Button leftIcon={<DeviceAnalytics />} onClick={handleBackLeadAuth}>
+            Тимлид
+          </Button>
         </Group>
 
         <Divider py={28} label={<Text fz={'lg'}>или</Text>} labelPosition={'center'} />
 
-        <Button fullWidth leftIcon={<School />}>
+        <Button fullWidth leftIcon={<School />} onClick={handleStudentAuth}>
           Авторизоваться как студент
         </Button>
       </>
@@ -60,8 +104,9 @@ export const LoginComponent = () => {
     <>
       {loading && <LoadingOverlay visible={true} />}
       {/*реальная авторизация, честно*/}
-      {/*<TextInput
-        variant={'filled'}
+      {/*
+      <TextInput
+        variant={'default'}
         size={'lg'}
         icon={<Mail />}
         placeholder="Электронная почта"
@@ -71,7 +116,7 @@ export const LoginComponent = () => {
       />
       <Space h={'sm'} />
       <TextInput
-        variant={'filled'}
+        variant={'default'}
         size={'lg'}
         icon={<Lock />}
         placeholder="Пароль"

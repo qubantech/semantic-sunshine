@@ -5,9 +5,18 @@ export enum UserRoles {
   FRONTEND_USER = 'FRONTEND_USER',
   DATA_USER = 'DATA_USER',
   DATA_LEAD = 'DATA_LEAD',
-  STUDENT = 'STUDENT'
+  STUDENT = 'STUDENT',
 }
 
+export enum UsualUsers {
+  BACKEND_USER = 'BACKEND_USER',
+  FRONTEND_USER = 'FRONTEND_USER',
+}
+
+export enum LeadUsers {
+  BACKEND_LEAD = 'BACKEND_LEAD',
+  FRONTEND_LEAD = 'FRONTEND_LEAD',
+}
 
 export type UserModel = {
   uuid: string;
