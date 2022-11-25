@@ -17,7 +17,6 @@ const DefaultLayout = observer((props: { children: JSX.Element }) => {
 
   const [navLinks, setNavLinks] = useState<NavLinkModel[] | undefined>();
 
-  const location = useLocation();
   const navigate = useNavigate();
 
   const { isMD } = useAllMQ();
@@ -95,24 +94,34 @@ const DefaultLayout = observer((props: { children: JSX.Element }) => {
         position={{ bottom: -1, left: 0, right: 0 }}
         sx={{ borderTop: '1px solid #868E96 ' }}
       >
-        <Group grow pt={5}>
-          {navLinks?.map(link => {
-            return <MobileNavItem key={link.title} link={link} />;
-          })}
-          <Link
-            style={{ position: 'absolute', height: '75px', width: '75px', bottom: '3px', right: '7vw' }}
-            to={navLinks?.[-1]?.path || Routes.auth}
-          >
-            <ActionIcon
-              color={'indigo'}
-              size={62}
-              sx={{ position: 'absolute', bottom: 12, right: 12, borderRadius: '100%' }}
-              variant="filled"
-            >
-              {navLinks?.[-1]?.icon}
-            </ActionIcon>
-          </Link>
-        </Group>
+        <>
+          {navLinks && navLinks.length === 3 ? (
+            <Group grow pt={5}>
+              {navLinks?.slice(0, -1)?.map(link => {
+                return <MobileNavItem key={link.title} link={link} />;
+              })}
+              <Link
+                style={{ position: 'absolute', height: '75px', width: '75px', bottom: '3px', right: '7vw' }}
+                to={navLinks?.[navLinks?.length - 1]?.path || Routes.auth}
+              >
+                <ActionIcon
+                  color={'indigo'}
+                  size={62}
+                  sx={{ position: 'absolute', bottom: 12, right: 12, borderRadius: '100%' }}
+                  variant="filled"
+                >
+                  {navLinks?.[navLinks?.length - 1]?.icon}
+                </ActionIcon>
+              </Link>
+            </Group>
+          ) : (
+            <Group grow pt={5}>
+              {navLinks?.map(link => {
+                return <MobileNavItem key={link.title} link={link} />;
+              })}
+            </Group>
+          )}
+        </>
       </MantineHeader>
     );
   };
