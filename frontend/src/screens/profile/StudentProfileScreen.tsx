@@ -8,7 +8,7 @@ import { Button } from '@mantine/core';
 import DefaultLayout from '../../components/layouts/defaultLayout/DefaultLayout';
 import { observer } from 'mobx-react-lite';
 
-export const ProfileScreen = observer(() => {
+export const StudentProfileScreen = observer(() => {
   const { exampleStore, userStore } = useRootStore();
 
   const navigate = useNavigate();
