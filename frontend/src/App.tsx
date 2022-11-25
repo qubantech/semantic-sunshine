@@ -3,8 +3,10 @@ import { ColorScheme, ColorSchemeProvider, MantineProvider, MantineThemeOverride
 import { RouterProvider } from 'react-router-dom';
 import { router } from './routes/routes';
 import { useLocalStorage } from '@mantine/hooks';
+import { observer } from 'mobx-react-lite';
+import DefaultLayout from './components/layouts/defaultLayout/DefaultLayout';
 
-export const App: React.FC = () => {
+export const App: React.FC = observer(() => {
   const MANTINE_THEME: MantineThemeOverride = {
     primaryColor: 'indigo',
     breakpoints: {
@@ -34,4 +36,4 @@ export const App: React.FC = () => {
       </MantineProvider>
     </ColorSchemeProvider>
   );
-};
+});

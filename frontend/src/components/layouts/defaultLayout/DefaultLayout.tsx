@@ -1,5 +1,5 @@
 import { ActionIcon, Container, createStyles, Group, Header as MantineHeader, Button } from '@mantine/core';
-import { BrandReact, Checklist } from 'tabler-icons-react';
+import { BrandReact } from 'tabler-icons-react';
 import { ColorSchemeButton } from '../../ColorSchemeButton';
 import { useRootStore } from '../../../base/RootStore';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -25,7 +25,10 @@ const DefaultLayout = observer((props: { children: JSX.Element }) => {
   //Effects
   useEffect(() => {
     handleGetNavLinks();
-  }, []);
+  }, [userStore.userInfo]);
+
+  console.log(userStore.userInfo);
+  console.log(navLinks);
 
   //Handlers
   const handleGetNavLinks = () => {
@@ -53,7 +56,6 @@ const DefaultLayout = observer((props: { children: JSX.Element }) => {
   };
 
   //Renders
-
   const renderDesktopMenu = () => {
     return (
       <MantineHeader height={55} fixed={true}>
@@ -95,11 +97,11 @@ const DefaultLayout = observer((props: { children: JSX.Element }) => {
       >
         <Group grow pt={5}>
           {navLinks?.map(link => {
-            return <MobileNavItem link={link} />;
+            return <MobileNavItem key={link.title} link={link} />;
           })}
           <Link
             style={{ position: 'absolute', height: '75px', width: '75px', bottom: '3px', right: '7vw' }}
-            to={Routes.main}
+            to={navLinks?.[-1]?.path || Routes.auth}
           >
             <ActionIcon
               color={'indigo'}
@@ -107,7 +109,7 @@ const DefaultLayout = observer((props: { children: JSX.Element }) => {
               sx={{ position: 'absolute', bottom: 12, right: 12, borderRadius: '100%' }}
               variant="filled"
             >
-              <Checklist size={35} />
+              {navLinks?.[-1]?.icon}
             </ActionIcon>
           </Link>
         </Group>
@@ -121,7 +123,7 @@ const DefaultLayout = observer((props: { children: JSX.Element }) => {
 
   return (
     <>
-      {location.pathname !== Routes.auth && renderMenu()}
+      {renderMenu()}
       <Container size={'xl'} pt={70}>
         {props.children}
       </Container>
