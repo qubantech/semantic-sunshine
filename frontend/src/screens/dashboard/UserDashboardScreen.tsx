@@ -5,11 +5,19 @@ import { Box } from 'tabler-icons-react';
 import { Group } from '@mantine/core';
 import { frontendSkills, frontendSkillsRate } from '../../components/competenciesGraph/data';
 import { CompetenciesCard } from './components/CompetenciesCard';
+import { CompetenciesChart } from './components/CompetenciesChart';
+import { useRootStore } from '../../base/RootStore';
+import { useUserReviews } from '../../modules/user/UserFirebaseService';
 
 interface IUserDashboardScreenProps {}
 
 export const UserDashboardScreen: React.FC<IUserDashboardScreenProps> = () => {
+  const { userStore } = useRootStore();
   const [opened, setOpened] = useState<boolean>(false);
+
+  const reviews = useUserReviews(userStore.userUid);
+
+  console.log(reviews);
 
   //Handlers
   const handleToggleDrawer = () => {
@@ -28,6 +36,7 @@ export const UserDashboardScreen: React.FC<IUserDashboardScreenProps> = () => {
           skills={frontendSkills}
           skillsRate={frontendSkillsRate}
         />
+        <CompetenciesChart data={reviews.watchedObject} />
       </div>
     </DefaultLayout>
   );

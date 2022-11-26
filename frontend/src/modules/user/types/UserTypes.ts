@@ -28,3 +28,9 @@ export type UserModel = {
   teamLead?: string;
   skills?: string;
 };
+
+export type UserReview = {
+  date: string;
+  comment: string;
+  skills: any;
+};

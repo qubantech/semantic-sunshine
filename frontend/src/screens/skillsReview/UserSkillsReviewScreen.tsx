@@ -40,7 +40,7 @@ export const UserSkillsReviewScreen: React.FC<ISkillsReviewScreenProps> = observ
   return (
     <DefaultLayout>
       <div>
-        <Text pb={32} fz={'xl'} align={'center'}>
+        <Text pb={32} fz={'xl'} fw={600} align={'center'}>
           Тестирование для формирования карты компетенций
         </Text>
         <Stepper breakpoint={'sm'} style={{ width: '100%' }} active={activeStep}>
