@@ -106,7 +106,7 @@ const DefaultLayout = observer((props: { children: JSX.Element }) => {
       >
         <>
           {navLinks && navLinks.length === 3 ? (
-            <Group grow pt={5}>
+            <Group pt={5} grow>
               {navLinks?.slice(0, -1)?.map(link => {
                 return <MobileNavItem key={link.title} link={link} />;
               })}
