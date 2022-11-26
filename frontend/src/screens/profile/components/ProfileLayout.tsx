@@ -4,6 +4,7 @@ import DefaultLayout from '../../../components/layouts/defaultLayout/DefaultLayo
 import { observer } from 'mobx-react-lite';
 import { LogoutButton } from './LogoutButton';
 import { ColorSchemeButton } from '../../../components/ColorSchemeButton';
+import { Notifications } from './Notifications';
 
 interface IProfileProps {
   children: JSX.Element;
@@ -18,7 +19,8 @@ export const ProfileLayout: React.FC<IProfileProps> = observer(props => {
   return (
     <DefaultLayout>
       <>
-        <Group position={'right'} mb={10}>
+        <Group position={'apart'} mb={10}>
+          <Notifications />
           <Group>
             <ColorSchemeButton />
             <LogoutButton />
