@@ -55,7 +55,7 @@ export const LeadProfileScreen: React.FC<ILeadProfileScreenProps> = observer(() 
       teamLead={null}
     >
       <>
-        <Button mt={20} size={'md'} variant={'outline'} fullWidth>
+        <Button mt={20} size={'md'} variant={'outline'} fullWidth onClick={() => userStore.setNothingVisible(true)}>
           Создать апдейт
         </Button>
         <Text fz={'lg'} fw={'600'} my={30}>

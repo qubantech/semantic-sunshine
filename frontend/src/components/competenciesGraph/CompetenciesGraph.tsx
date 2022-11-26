@@ -3,7 +3,7 @@ import ReactFlow, { Node, Edge, useNodesState, useEdgesState, addEdge } from 're
 import 'reactflow/dist/style.css';
 import './CompetenciesGraph.css';
 import { getNodes, graphColors, initialEdges } from './data';
-import { Drawer, Stepper, Text, ColorSwatch, Card } from '@mantine/core';
+import { Drawer, Stepper, Text, ColorSwatch, Card, Space } from '@mantine/core';
 
 interface ICompetenciesGraphProps {
   opened: boolean;
@@ -43,10 +43,12 @@ export const CompetenciesGraph: React.FC<ICompetenciesGraphProps> = props => {
         edges={edges}
         onConnect={onConnect}
         onNodesChange={onNodesChange}
+        onNodeDrag={() => {}}
         onEdgesChange={onEdgesChange}
         className="touchdevice-flow"
         fitView
       />
+      <Space h={'lg'} pb={180} />
     </Drawer>
   );
 };
