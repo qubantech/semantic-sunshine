@@ -20,14 +20,14 @@ export const LeadUpdates: React.FC<ILeadUpdatesProps> = props => {
     <Card shadow={'sm'} p={'lg'} radius={'md'} withBorder>
       <Group position={'apart'}>
         <Group>
-          <ThemeIcon variant={'light'} radius={'xl'} color={props.status === 'danger' ? 'red' : 'yellow'}>
+          <ThemeIcon variant={'outline'} radius={'xl'} color={props.status === 'danger' ? 'red' : 'yellow'}>
             <CircleDot size={15} />
           </ThemeIcon>
-          <Text fz={'md'} fw={600}>
+          <Text fz={'lg'} fw={600}>
             {props.title}
           </Text>
         </Group>
-        <Text fz={'xs'} fw={600}>
+        <Text fz={'sm'} fw={600}>
           {props.date}
         </Text>
       </Group>

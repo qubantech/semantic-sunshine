@@ -67,8 +67,8 @@ export const UserProfileScreen = observer(() => {
       teamLead={userStore.userInfo?.teamLead || null}
     >
       <>
-        <Text fz={'lg'} fw={'600'} my={30}>
-          Апдейты
+        <Text fz={'xl'} fw={'600'} my={20}>
+          Апдейты от лида (+2)
         </Text>
         <Group>
           {userStore.userInfo?.role === UserRoles.FRONTEND_USER
@@ -95,8 +95,8 @@ export const UserProfileScreen = observer(() => {
                 );
               })}
         </Group>
-        <Text fz={'lg'} fw={'600'} my={30}>
-          Оцененные анкеты
+        <Text fz={'xl'} fw={'600'} my={20}>
+          Проверенные анкеты
         </Text>
       </>
     </ProfileLayout>
