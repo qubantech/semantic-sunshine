@@ -5,7 +5,7 @@ interface IEmployeeDrawerProps {
   opened: boolean;
   setOpened: (a: boolean) => void;
   title: string;
-  employmentTime: string;
+  employmentTime: string | null;
 }
 
 export const EmployeeDrawer: React.FC<IEmployeeDrawerProps> = props => {
@@ -20,7 +20,7 @@ export const EmployeeDrawer: React.FC<IEmployeeDrawerProps> = props => {
           <Text fz={'xl'} fw={600}>
             {props.title}
           </Text>
-          <Text fz={'md'}>Работает с {props.employmentTime}</Text>
+          {props.employmentTime && <Text fz={'md'}>Работает с {props.employmentTime}</Text>}
         </Stack>
       }
       padding={'lg'}
