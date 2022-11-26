@@ -10,6 +10,7 @@ import { UserProfileScreen } from '../screens/profile/UserProfileScreen';
 import { LeadDashboardScreen } from '../screens/dashboard/LeadDashboardScreen';
 import { StudentDashboardScreen } from '../screens/dashboard/StudentDashboardScreen';
 import { UserDashboardScreen } from '../screens/dashboard/UserDashboardScreen';
+import { UserSkillsReviewScreen } from '../screens/skillsReview/UserSkillsReviewScreen';
 
 export const Routes = {
   main: '/',
@@ -24,6 +25,8 @@ export const Routes = {
   leadDashboard: '/lead/dashboard',
   studentDashboard: '/student/dashboard',
   userDashboard: '/user/dashboard',
+  //
+  userReview: '/user/review',
 };
 
 export const UserNavLinks: NavLinkModel[] = [
@@ -38,7 +41,7 @@ export const UserNavLinks: NavLinkModel[] = [
     icon: <MoodSmileBeam color={'#868E96'} />,
   },
   {
-    path: Routes.userDashboard,
+    path: Routes.userReview,
     title: '',
     icon: <Checklist size={35} />,
   },
@@ -108,6 +111,11 @@ export const router = createBrowserRouter([
   {
     path: Routes.userDashboard,
     element: <UserDashboardScreen />,
+  },
+  //
+  {
+    path: Routes.userReview,
+    element: <UserSkillsReviewScreen />,
   },
 ]);
 
