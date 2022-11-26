@@ -1,6 +1,6 @@
 import React from 'react';
 import { ProfileLayout } from './components/ProfileLayout';
-import { Group, Text } from '@mantine/core';
+import { Group, Text, Button } from '@mantine/core';
 import { observer } from 'mobx-react-lite';
 import { useRootStore } from '../../base/RootStore';
 import { UserRoles } from '../../modules/user/types/UserTypes';
@@ -11,15 +11,15 @@ interface ILeadProfileScreenProps {}
 
 const frontendEmployeesCards = [
   {
-    firstname: 'Кнопко',
-    lastname: 'Выравниватель',
+    firstname: 'Даниил',
+    lastname: 'Выравнивателевич',
     role: 'Frontend React',
     date: '10.11.2022',
     checked: true,
   },
   {
-    firstname: 'Блоко',
-    lastname: 'Центрователь',
+    firstname: 'Антон',
+    lastname: 'Центрователевич',
     role: 'Frontend React',
     date: '10.11.2022',
     checked: false,
@@ -28,15 +28,15 @@ const frontendEmployeesCards = [
 
 const backendEmployeesCards = [
   {
-    firstname: 'Данные',
-    lastname: 'Отдаватель',
+    firstname: 'Константин',
+    lastname: 'Бэкэндович',
     role: 'Backend Java',
     date: '10.11.2022',
     checked: true,
   },
   {
-    firstname: 'Данные',
-    lastname: 'Хранитель',
+    firstname: 'Григорий',
+    lastname: 'Джавович',
     role: 'Backend Java',
     date: '10.11.2022',
     checked: false,
@@ -55,6 +55,9 @@ export const LeadProfileScreen: React.FC<ILeadProfileScreenProps> = observer(() 
       teamLead={null}
     >
       <>
+        <Button mt={20} size={'md'} variant={'outline'} fullWidth>
+          Создать апдейт
+        </Button>
         <Text fz={'lg'} fw={'600'} my={30}>
           Сотрудники
         </Text>
@@ -67,8 +70,11 @@ export const LeadProfileScreen: React.FC<ILeadProfileScreenProps> = observer(() 
                 return <EmployeeCard firstname={card.firstname} lastname={card.lastname} role={card.role} />;
               })}
         </Group>
-        <Text fz={'lg'} fw={'600'} my={30}>
+        <Text fz={'lg'} fw={'600'} mt={30} mb={0}>
           Анкеты
+        </Text>
+        <Text fz={'xs'} fw={'600'} mb={30} color={'red'}>
+          Есть требующие проверки
         </Text>
         <Group>
           {userStore.userInfo?.role === UserRoles.BACKEND_LEAD

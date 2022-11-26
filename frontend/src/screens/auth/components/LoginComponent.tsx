@@ -92,7 +92,15 @@ export const LoginComponent = () => {
             </Button>
           </Group>
 
-          <Divider py={28} label={<Text fz={'lg'}>или</Text>} labelPosition={'center'} />
+          <Divider
+            py={28}
+            label={
+              <Text fz={'md'} color={'gray'}>
+                или
+              </Text>
+            }
+            labelPosition={'center'}
+          />
 
           <Button fullWidth leftIcon={<School />} onClick={handleStudentAuth}>
             Авторизоваться как студент
