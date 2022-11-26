@@ -1,13 +1,11 @@
 import React from 'react';
-import { Drawer, Text } from '@mantine/core';
-import { CompetenciesChart } from '../../dashboard/components/CompetenciesChart';
-import { useRootStore } from '../../../base/RootStore';
-import { useUserList, useUserReviews } from '../../../modules/user/UserFirebaseService';
+import { Drawer, Stack, Text } from '@mantine/core';
 
 interface IEmployeeDrawerProps {
   opened: boolean;
   setOpened: (a: boolean) => void;
   title: string;
+  employmentTime: string | null;
 }
 
 export const EmployeeDrawer: React.FC<IEmployeeDrawerProps> = props => {
@@ -17,7 +15,14 @@ export const EmployeeDrawer: React.FC<IEmployeeDrawerProps> = props => {
       opened={props.opened}
       onClose={() => props.setOpened(false)}
       position={'bottom'}
-      title={props.title}
+      title={
+        <Stack spacing={0}>
+          <Text fz={'xl'} fw={600}>
+            {props.title}
+          </Text>
+          {props.employmentTime && <Text fz={'md'}>Работает с {props.employmentTime}</Text>}
+        </Stack>
+      }
       padding={'lg'}
       size={'80%'}
     >

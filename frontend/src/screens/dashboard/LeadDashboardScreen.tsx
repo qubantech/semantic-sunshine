@@ -85,7 +85,7 @@ export const LeadDashboardScreen: React.FC<ILeadDashboardScreenProps> = observer
   return (
     <DefaultLayout>
       <>
-        <Text fz={'xl'} fw={'600'} mt={30} mb={0}>
+        <Text fz={'xl'} fw={'600'} mt={40} mb={20}>
           Непроверенные анкеты
         </Text>
         <Group>
@@ -97,6 +97,7 @@ export const LeadDashboardScreen: React.FC<ILeadDashboardScreenProps> = observer
                     lastname={card.lastname}
                     date={card.date}
                     isChecked={card.checked}
+                    employmentTime={'11.11.2021'}
                   />
                 );
               })
@@ -107,12 +108,13 @@ export const LeadDashboardScreen: React.FC<ILeadDashboardScreenProps> = observer
                     lastname={card.lastname}
                     date={card.date}
                     isChecked={card.checked}
+                    employmentTime={'11.06.2020'}
                   />
                 );
               })}
         </Group>
 
-        <Text fz={'xl'} fw={'600'} mt={30} mb={0}>
+        <Text fz={'xl'} fw={'600'} mt={40} mb={20}>
           Проверенные анкеты
         </Text>
 
@@ -125,6 +127,7 @@ export const LeadDashboardScreen: React.FC<ILeadDashboardScreenProps> = observer
                     lastname={card.lastname}
                     date={card.date}
                     isChecked={card.checked}
+                    employmentTime={'11.11.2021'}
                   />
                 );
               })
@@ -135,6 +138,7 @@ export const LeadDashboardScreen: React.FC<ILeadDashboardScreenProps> = observer
                     lastname={card.lastname}
                     date={card.date}
                     isChecked={card.checked}
+                    employmentTime={'11.06.2020'}
                   />
                 );
               })}

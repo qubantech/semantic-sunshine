@@ -3,12 +3,14 @@ import { EmployeeDrawer } from './EmployeeDrawer';
 import { ActionIcon, Card, Group, Stack, Text } from '@mantine/core';
 import { ArrowRight } from 'tabler-icons-react';
 import { UserSkillsReviewScreen } from '../../skillsReview/UserSkillsReviewScreen';
+import { UserSkillsReviewTest } from '../../dashboard/components/UserSkillsReviewTest';
 
 interface IEmployeeTestCardProps {
   firstname: string;
   lastname: string;
   date: string;
   isChecked: boolean;
+  employmentTime: string;
 }
 
 export const EmployeeTestCard: React.FC<IEmployeeTestCardProps> = props => {
@@ -23,8 +25,13 @@ export const EmployeeTestCard: React.FC<IEmployeeTestCardProps> = props => {
   //Render
   return (
     <>
-      <EmployeeDrawer opened={opened} setOpened={setOpened} title={props.firstname + ' ' + props.lastname}>
-        <UserSkillsReviewScreen />
+      <EmployeeDrawer
+        opened={opened}
+        setOpened={setOpened}
+        title={props.firstname + ' ' + props.lastname}
+        employmentTime={props.employmentTime}
+      >
+        <UserSkillsReviewTest checked={props.isChecked} />
       </EmployeeDrawer>
       <Card
         sx={props.isChecked ? { width: '100%' } : { width: '100%', borderLeft: '2px solid red' }}

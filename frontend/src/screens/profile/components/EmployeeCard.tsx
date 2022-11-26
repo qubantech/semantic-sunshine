@@ -29,10 +29,8 @@ export const EmployeeCard: React.FC<IEmployeeCardProps> = props => {
   //Render
   return (
     <>
-      <EmployeeDrawer opened={opened} setOpened={setOpened} title={'Статистика'}>
-        <div>
-          <CompetenciesChart data={data.watchedObject} />
-        </div>
+      <EmployeeDrawer opened={opened} setOpened={setOpened} title={'Статистика'} employmentTime={'24.05.2021'}>
+        <CompetenciesChart data={data.watchedObject} />
       </EmployeeDrawer>
       <Card shadow={'sm'} p={'lg'} radius={'md'} withBorder sx={{ width: '100%' }} onClick={onEmployeeClick}>
         <Group position={'apart'}>

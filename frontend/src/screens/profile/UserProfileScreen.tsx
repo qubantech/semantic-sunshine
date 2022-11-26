@@ -6,9 +6,12 @@ import { useRootStore } from '../../base/RootStore';
 import { Routes } from '../../routes/routes';
 import { observer } from 'mobx-react-lite';
 import { ProfileLayout } from './components/ProfileLayout';
-import { Group, Button, Text, Drawer } from '@mantine/core';
+import { Group, Button, Text, Drawer, Stack } from '@mantine/core';
 import { UserRoles } from '../../modules/user/types/UserTypes';
 import { LeadUpdates, UpdateStatus } from './components/LeadUpdates';
+import { UserTestCard } from './components/UserTestCard';
+import { EmployeeDrawer } from './components/EmployeeDrawer';
+import { UserSkillsReviewTest } from '../dashboard/components/UserSkillsReviewTest';
 
 const frontendUpdatesCards = [
   {
@@ -47,12 +50,23 @@ const backendUpdatesCards = [
   },
 ];
 
+const testCards = [
+  {
+    date: '11.06.2022',
+  },
+  {
+    date: '11.11.2022',
+  },
+];
+
 export const UserProfileScreen = observer(() => {
   const { userStore } = useRootStore();
 
   const [openJob, setOpenJob] = useState(false);
 
   const navigate = useNavigate();
+
+  const [checkedTestOpen, setCheckTestOpen] = useState(false);
 
   //Effects
   useEffect(() => {
@@ -77,7 +91,7 @@ export const UserProfileScreen = observer(() => {
         <Button mt={16} size={'lg'} variant={'outline'} fullWidth onClick={handleToggleJob}>
           Найти новую работу
         </Button>
-        <Group position={'apart'} align={'center'} mt={40} mb={20}>
+        <Group position={'apart'} align={'center'} mt={40} mb={5}>
           <Text fz={'xl'} fw={'600'}>
             Апдейты от лида (+2)
           </Text>
@@ -117,9 +131,24 @@ export const UserProfileScreen = observer(() => {
                 );
               })}
         </Group>
-        <Text fz={'xl'} fw={'600'} my={20}>
+        <Text fz={'xl'} fw={'600'} mt={40} mb={10}>
           Проверенные анкеты
         </Text>
+        <Stack spacing={15}>
+          {testCards.map(card => {
+            return <UserTestCard date={card.date} onClick={setCheckTestOpen} />;
+          })}
+        </Stack>
+
+        <EmployeeDrawer
+          opened={checkedTestOpen}
+          setOpened={setCheckTestOpen}
+          title={'Проверенная анкета'}
+          employmentTime={null}
+        >
+          <UserSkillsReviewTest checked={true} />
+        </EmployeeDrawer>
+
         <Drawer
           opened={openJob}
           onClose={handleToggleJob}
