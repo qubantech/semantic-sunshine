@@ -30,7 +30,9 @@ export const EmployeeCard: React.FC<IEmployeeCardProps> = props => {
   return (
     <>
       <EmployeeDrawer opened={opened} setOpened={setOpened} title={'Статистика'}>
-        <CompetenciesChart data={data.watchedObject} />
+        <div>
+          <CompetenciesChart data={data.watchedObject} />
+        </div>
       </EmployeeDrawer>
       <Card shadow={'sm'} p={'lg'} radius={'md'} withBorder sx={{ width: '100%' }} onClick={onEmployeeClick}>
         <Group position={'apart'}>

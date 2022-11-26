@@ -37,7 +37,7 @@ export const UserDashboardScreen: React.FC<IUserDashboardScreenProps> = () => {
       <>
         <div style={{ marginBottom: 80 }}>
           <WelcomeBlock toggleCard={handleToggleDrawer} name={userStore.userInfo?.firstName || null} />
-          <Group position={'center'}>
+          <Group position={'center'} pt={32}>
             <CompetenciesChart data={reviews.watchedObject} />
           </Group>
           <Group>

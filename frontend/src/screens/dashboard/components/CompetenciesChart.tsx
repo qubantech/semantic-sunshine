@@ -92,7 +92,7 @@ export const CompetenciesChart: React.FC<ICompetenciesChartProps> = props => {
   return (
     <Stack sx={{ width: '90vw' }} align={'center'}>
       <Stack spacing={0} sx={{ width: '90vw' }}>
-        <Text pt={32} fz={26} fw={800} align={'center'}>
+        <Text fz={26} fw={800} align={'center'}>
           Динамика развития компетенций
         </Text>
         <Text mb={-56} fz={'sm'} fw={300} align={'center'}>
