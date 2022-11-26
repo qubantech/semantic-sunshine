@@ -15,16 +15,16 @@ export const MobileNavItem: React.FC<INavLinkProps> = props => {
 
   //Render
   return (
-    <ActionIcon size={48}>
-      <Link to={link.path}>
+    <Link to={link.path}>
+      <ActionIcon size={48} style={{ margin: 'auto' }}>
         <Stack className={classes.link} align={'center'} spacing={0}>
           {link.icon}
           <Text fz={'sm'} className={classes.linkLabel}>
             {link.title}
           </Text>
         </Stack>
-      </Link>
-    </ActionIcon>
+      </ActionIcon>
+    </Link>
   );
 };
 

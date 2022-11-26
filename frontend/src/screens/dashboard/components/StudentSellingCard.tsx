@@ -2,7 +2,7 @@ import { createStyles, Card, Text, Title, Button, List } from '@mantine/core';
 
 const useStyles = createStyles(theme => ({
   card: {
-    height: 370,
+    height: 400,
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
@@ -49,6 +49,7 @@ export function StudentSellingCard({ image, title, category, pros, buttonLabel }
         backgroundRepeat: 'no-repeat',
         backgroundSize: '40%',
         backgroundPosition: '90% 75%',
+        boxShadow: '5px 5px 5px rgba(92, 124, 250, 0.5)',
       }}
       className={classes.card}
     >

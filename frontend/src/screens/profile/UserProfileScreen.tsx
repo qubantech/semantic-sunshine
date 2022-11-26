@@ -67,12 +67,17 @@ export const UserProfileScreen = observer(() => {
       teamLead={userStore.userInfo?.teamLead || null}
     >
       <>
-        <Button mt={16} variant={'outline'} fullWidth onClick={handleToggleJob}>
+        <Button mt={16} size={'lg'} variant={'outline'} fullWidth onClick={handleToggleJob}>
           Найти новую работу
         </Button>
-        <Text fz={'lg'} fw={'600'} my={30}>
-          Апдейты
-        </Text>
+        <Group position={'apart'} align={'center'} mt={40} mb={20}>
+          <Text fz={'xl'} fw={'600'}>
+            Апдейты от лида (+2)
+          </Text>
+          <Button variant={'subtle'} size={'lg'} sx={{ textDecoration: 'underline' }}>
+            Ещё
+          </Button>
+        </Group>
         <Group>
           {userStore.userInfo?.role === UserRoles.FRONTEND_USER
             ? frontendUpdatesCards.map(card => {
@@ -98,8 +103,8 @@ export const UserProfileScreen = observer(() => {
                 );
               })}
         </Group>
-        <Text fz={'lg'} fw={'600'} my={30}>
-          Оцененные анкеты
+        <Text fz={'xl'} fw={'600'} my={20}>
+          Проверенные анкеты
         </Text>
         <Drawer
           opened={openJob}

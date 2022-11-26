@@ -5,6 +5,7 @@ import { auth } from '../../../base/firebase/firebase-config';
 import { Routes } from '../../../routes/routes';
 import { useRootStore } from '../../../base/RootStore';
 import { useNavigate } from 'react-router-dom';
+import { Logout } from 'tabler-icons-react';
 
 interface ILogoutButtonProps {}
 
@@ -22,8 +23,8 @@ export const LogoutButton: React.FC<ILogoutButtonProps> = () => {
 
   //Render
   return (
-    <div>
-      <Button onClick={handleLogout}>Выйти</Button>
-    </div>
+    <Button leftIcon={<Logout />} onClick={handleLogout}>
+      Выйти
+    </Button>
   );
 };

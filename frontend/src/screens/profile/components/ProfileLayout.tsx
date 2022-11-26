@@ -28,18 +28,18 @@ export const ProfileLayout: React.FC<IProfileProps> = observer(props => {
           <Group align={'start'}>
             <Avatar radius="xl" size={'lg'} variant={'outline'} />
             <Stack spacing={0}>
-              <Text tt="uppercase" fw={600}>
+              <Text fz={'xl'} tt="uppercase" fw={600}>
                 {props.firstname}
               </Text>
-              <Text tt="uppercase" fw={600}>
+              <Text fz={'xl'} tt="uppercase" fw={600}>
                 {props.lastname}
               </Text>
-              <Stack spacing={0} mt={15} sx={{ maxWidth: '220px' }}>
-                <Text fz={'sm'}>
+              <Stack spacing={0} mt={15} sx={{ maxWidth: '240px' }}>
+                <Text fz={'md'}>
                   <span style={{ fontWeight: 600 }}>Позиция:</span> {props.role}
                 </Text>
                 {props.teamLead && (
-                  <Text fz={'sm'}>
+                  <Text fz={'md'}>
                     <span style={{ fontWeight: 600 }}>Тимлид:</span> {props.teamLead}
                   </Text>
                 )}
