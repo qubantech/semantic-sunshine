@@ -21,7 +21,7 @@ export const EmployeeCard: React.FC<IEmployeeCardProps> = props => {
   //Render
   return (
     <>
-      <EmployeeDrawer opened={opened} setOpened={setOpened} />
+      <EmployeeDrawer opened={opened} setOpened={setOpened} title={'Статистика'} />
       <Card shadow={'sm'} p={'lg'} radius={'md'} withBorder sx={{ width: '100%' }} onClick={onEmployeeClick}>
         <Group position={'apart'}>
           <Stack spacing={0}>

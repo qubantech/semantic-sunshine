@@ -4,6 +4,7 @@ import { Drawer, Text } from '@mantine/core';
 interface IEmployeeDrawerProps {
   opened: boolean;
   setOpened: (a: boolean) => void;
+  title: string;
 }
 
 export const EmployeeDrawer: React.FC<IEmployeeDrawerProps> = props => {
@@ -13,11 +14,11 @@ export const EmployeeDrawer: React.FC<IEmployeeDrawerProps> = props => {
       opened={props.opened}
       onClose={() => props.setOpened(false)}
       position={'bottom'}
-      title="Статистика"
+      title={props.title}
       padding={'lg'}
       size={'80%'}
     >
-      <Text>aaaaa</Text>
+      {props.children}
     </Drawer>
   );
 };

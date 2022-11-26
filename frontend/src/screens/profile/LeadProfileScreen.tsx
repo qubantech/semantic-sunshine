@@ -70,35 +70,6 @@ export const LeadProfileScreen: React.FC<ILeadProfileScreenProps> = observer(() 
                 return <EmployeeCard firstname={card.firstname} lastname={card.lastname} role={card.role} />;
               })}
         </Group>
-        <Text fz={'xl'} fw={'600'} mt={30} mb={0}>
-          Анкеты
-        </Text>
-        <Text fz={'md'} fw={'600'} mb={30} color={'red'}>
-          Есть требующие проверки
-        </Text>
-        <Group>
-          {userStore.userInfo?.role === UserRoles.BACKEND_LEAD
-            ? backendEmployeesCards.map(card => {
-                return (
-                  <EmployeeTestCard
-                    firstname={card.firstname}
-                    lastname={card.lastname}
-                    date={card.date}
-                    isChecked={card.checked}
-                  />
-                );
-              })
-            : frontendEmployeesCards.map(card => {
-                return (
-                  <EmployeeTestCard
-                    firstname={card.firstname}
-                    lastname={card.lastname}
-                    date={card.date}
-                    isChecked={card.checked}
-                  />
-                );
-              })}
-        </Group>
       </>
     </ProfileLayout>
   );

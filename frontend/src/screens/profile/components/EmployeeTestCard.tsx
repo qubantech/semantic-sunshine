@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { EmployeeDrawer } from './EmployeeDrawer';
 import { ActionIcon, Card, Group, Stack, Text } from '@mantine/core';
 import { ArrowRight } from 'tabler-icons-react';
+import { UserSkillsReviewScreen } from '../../skillsReview/UserSkillsReviewScreen';
 
 interface IEmployeeTestCardProps {
   firstname: string;
@@ -22,7 +23,9 @@ export const EmployeeTestCard: React.FC<IEmployeeTestCardProps> = props => {
   //Render
   return (
     <>
-      <EmployeeDrawer opened={opened} setOpened={setOpened} />
+      <EmployeeDrawer opened={opened} setOpened={setOpened} title={props.firstname + ' ' + props.lastname}>
+        <UserSkillsReviewScreen />
+      </EmployeeDrawer>
       <Card
         sx={props.isChecked ? { width: '100%' } : { width: '100%', borderLeft: '2px solid red' }}
         shadow={'sm'}
