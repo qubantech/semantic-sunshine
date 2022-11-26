@@ -1,4 +1,14 @@
-import { ActionIcon, Container, createStyles, Group, Header as MantineHeader, Button } from '@mantine/core';
+import {
+  ActionIcon,
+  Container,
+  createStyles,
+  Group,
+  Header as MantineHeader,
+  Button,
+  Affix,
+  Overlay,
+  Loader,
+} from '@mantine/core';
 import { BrandReact } from 'tabler-icons-react';
 import { ColorSchemeButton } from '../../ColorSchemeButton';
 import { useRootStore } from '../../../base/RootStore';
@@ -132,6 +142,7 @@ const DefaultLayout = observer((props: { children: JSX.Element }) => {
 
   return (
     <>
+      {userStore.nothingVisible && <Overlay children={<Loader />} />}
       {renderMenu()}
       <Container size={'xl'} pt={isMD ? 70 : 15} pb={isMD ? 15 : 75}>
         {props.children}

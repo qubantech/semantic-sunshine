@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import DefaultLayout from '../../components/layouts/defaultLayout/DefaultLayout';
 import { CompetenciesGraph } from '../../components/competenciesGraph/CompetenciesGraph';
-import { Box } from 'tabler-icons-react';
-import { Group } from '@mantine/core';
+import { Group, Text } from '@mantine/core';
 import { frontendSkills, frontendSkillsRate } from '../../components/competenciesGraph/data';
 import { CompetenciesCard } from './components/CompetenciesCard';
 import { CompetenciesChart } from './components/CompetenciesChart';
@@ -36,7 +35,9 @@ export const UserDashboardScreen: React.FC<IUserDashboardScreenProps> = () => {
           skills={frontendSkills}
           skillsRate={frontendSkillsRate}
         />
-        <CompetenciesChart data={reviews.watchedObject} />
+        <Group sx={{ height: '60vh' }} position={'center'}>
+          <CompetenciesChart data={reviews.watchedObject} />
+        </Group>
       </div>
     </DefaultLayout>
   );

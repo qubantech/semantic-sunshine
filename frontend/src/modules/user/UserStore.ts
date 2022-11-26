@@ -7,12 +7,18 @@ export class UserStore {
   userUid: string | null = null;
   userInfo: UserModel | null = null;
 
+  nothingVisible: boolean = false;
+
   constructor() {
     makeAutoObservable(this);
   }
 
   setLoading = (value: boolean) => {
     this.loading = value;
+  };
+
+  setNothingVisible = (value: boolean) => {
+    this.nothingVisible = value;
   };
 
   setUserUid = (value: string | null) => {
