@@ -1,12 +1,12 @@
 import { signOut } from 'firebase/auth';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { auth } from '../../base/firebase/firebase-config';
 import { useRootStore } from '../../base/RootStore';
 import { Routes } from '../../routes/routes';
 import { observer } from 'mobx-react-lite';
 import { ProfileLayout } from './components/ProfileLayout';
-import { Group, Text } from '@mantine/core';
+import { Group, Button, Text, Drawer } from '@mantine/core';
 import { UserRoles } from '../../modules/user/types/UserTypes';
 import { LeadUpdates, UpdateStatus } from './components/LeadUpdates';
 
@@ -43,6 +43,8 @@ const backendUpdatesCards = [
 export const UserProfileScreen = observer(() => {
   const { exampleStore, userStore } = useRootStore();
 
+  const [openJob, setOpenJob] = useState(false);
+
   const navigate = useNavigate();
 
   //Effects
@@ -52,10 +54,8 @@ export const UserProfileScreen = observer(() => {
   }, []);
 
   //Handlers
-  const handleLogout = () => {
-    signOut(auth);
-    userStore.resetStore();
-    navigate(Routes.auth);
+  const handleToggleJob = () => {
+    setOpenJob(!openJob);
   };
 
   //Renders
@@ -67,6 +67,9 @@ export const UserProfileScreen = observer(() => {
       teamLead={userStore.userInfo?.teamLead || null}
     >
       <>
+        <Button mt={16} variant={'outline'} fullWidth onClick={handleToggleJob}>
+          Найти новую работу
+        </Button>
         <Text fz={'lg'} fw={'600'} my={30}>
           Апдейты
         </Text>
@@ -98,6 +101,23 @@ export const UserProfileScreen = observer(() => {
         <Text fz={'lg'} fw={'600'} my={30}>
           Оцененные анкеты
         </Text>
+        <Drawer
+          opened={openJob}
+          onClose={handleToggleJob}
+          title={<Text fz={'xl'}>Поиск новой работы с нашей помощью</Text>}
+          padding="xl"
+          size="50%"
+          position={'bottom'}
+        >
+          <Text>
+            Ваши компетенции были оценены профильным специалистом. Наш сервис предоставляет возможность поделиться
+            текущей картой компетенции с будущим работодателем для честного оценивания специалистами и ускорению
+            процесса собеседования. Скопируйте ссылку на текущую анкету и вставьте в свое новое резюме. Удачи :)
+          </Text>
+          <Text pt={12} fz={'sm'} fw={400}>
+            (кстати ты уволен, кстати пошел на биржу работы)
+          </Text>
+        </Drawer>
       </>
     </ProfileLayout>
   );
