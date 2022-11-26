@@ -23,7 +23,7 @@ export const LogoutButton: React.FC<ILogoutButtonProps> = () => {
   //Render
   return (
     <div>
-      <Button onClick={handleLogout}>Logout</Button>
+      <Button onClick={handleLogout}>Выйти</Button>
     </div>
   );
 };

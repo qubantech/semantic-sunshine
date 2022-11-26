@@ -1,7 +1,7 @@
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Button, Divider, Group, LoadingOverlay, Space, Text, TextInput } from '@mantine/core';
+import { Button, Divider, Group, LoadingOverlay, Space, Text, TextInput, Stack, Box } from '@mantine/core';
 import { DeviceAnalytics, Lock, Mail, School, User } from 'tabler-icons-react';
 import { auth } from '../../../base/firebase/firebase-config';
 import { useRootStore } from '../../../base/RootStore';
@@ -66,37 +66,39 @@ export const LoginComponent = () => {
   //Renders
   const renderAuthButtons = () => {
     return (
-      <>
-        <Text pt={8} fz={'lg'} pb={8}>
-          Отдел Frontend
-        </Text>
-        <Group grow>
-          <Button leftIcon={<User />} onClick={handleFrontUserAuth}>
-            Работник
-          </Button>
-          <Button leftIcon={<DeviceAnalytics />} onClick={handleFrontLeadAuth}>
-            Тимлид
-          </Button>
-        </Group>
+      <Stack justify={'center'} spacing={0} sx={{ height: '100vh' }}>
+        <Box mb={200}>
+          <Text fz={'lg'} pb={8}>
+            Отдел Frontend
+          </Text>
+          <Group grow>
+            <Button leftIcon={<User />} onClick={handleFrontUserAuth}>
+              Работник
+            </Button>
+            <Button leftIcon={<DeviceAnalytics />} onClick={handleFrontLeadAuth}>
+              Тимлид
+            </Button>
+          </Group>
 
-        <Text fz={'lg'} pt={32} pb={8}>
-          Отдел Backend
-        </Text>
-        <Group grow>
-          <Button leftIcon={<User />} onClick={handleBackUserAuth}>
-            Работник
-          </Button>
-          <Button leftIcon={<DeviceAnalytics />} onClick={handleBackLeadAuth}>
-            Тимлид
-          </Button>
-        </Group>
+          <Text fz={'lg'} pt={32} pb={8}>
+            Отдел Backend
+          </Text>
+          <Group grow>
+            <Button leftIcon={<User />} onClick={handleBackUserAuth}>
+              Работник
+            </Button>
+            <Button leftIcon={<DeviceAnalytics />} onClick={handleBackLeadAuth}>
+              Тимлид
+            </Button>
+          </Group>
 
-        <Divider py={28} label={<Text fz={'lg'}>или</Text>} labelPosition={'center'} />
+          <Divider py={28} label={<Text fz={'lg'}>или</Text>} labelPosition={'center'} />
 
-        <Button fullWidth leftIcon={<School />} onClick={handleStudentAuth}>
-          Авторизоваться как студент
-        </Button>
-      </>
+          <Button fullWidth leftIcon={<School />} onClick={handleStudentAuth}>
+            Авторизоваться как студент
+          </Button>
+        </Box>
+      </Stack>
     );
   };
 
