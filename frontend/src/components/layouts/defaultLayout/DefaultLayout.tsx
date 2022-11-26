@@ -133,7 +133,7 @@ const DefaultLayout = observer((props: { children: JSX.Element }) => {
   return (
     <>
       {renderMenu()}
-      <Container size={'xl'} pt={isMD ? 70 : 15}>
+      <Container size={'xl'} pt={isMD ? 70 : 15} pb={isMD ? 15 : 75}>
         {props.children}
       </Container>
     </>
