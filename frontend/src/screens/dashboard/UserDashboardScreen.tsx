@@ -4,25 +4,30 @@ import { CompetenciesGraph } from '../../components/competenciesGraph/Competenci
 import { Box } from 'tabler-icons-react';
 import { Group } from '@mantine/core';
 import { frontendSkills, frontendSkillsRate } from '../../components/competenciesGraph/data';
+import { CompetenciesCard } from './components/CompetenciesCard';
 
 interface IUserDashboardScreenProps {}
 
 export const UserDashboardScreen: React.FC<IUserDashboardScreenProps> = () => {
   const [opened, setOpened] = useState<boolean>(false);
 
+  //Handlers
+  const handleToggleDrawer = () => {
+    setOpened(!opened);
+  };
+
   //Render
   return (
     <DefaultLayout>
       <div>
-        <Group sx={{ height: '70vh', width: '100%' }}>
-          <CompetenciesGraph
-            opened={opened}
-            title={'Карта компетенций Junior Front-end разработчика'}
-            setOpened={() => setOpened(false)}
-            skills={frontendSkills}
-            skillsRate={frontendSkillsRate}
-          />
-        </Group>
+        <CompetenciesCard setOpened={handleToggleDrawer} />
+        <CompetenciesGraph
+          opened={opened}
+          title={'Карта компетенций Junior Front-end разработчика'}
+          setOpened={() => setOpened(false)}
+          skills={frontendSkills}
+          skillsRate={frontendSkillsRate}
+        />
       </div>
     </DefaultLayout>
   );
