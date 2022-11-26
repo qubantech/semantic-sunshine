@@ -79,7 +79,9 @@ export const CompetenciesChart: React.FC<ICompetenciesChartProps> = props => {
           }),
           borderColor: color,
           backgroundColor: color,
-          hidden: index && true,
+          hidden: [0, 1, 2].includes(index) ? false : true,
+          cubicInterpolationMode: 'monotone',
+          tension: 0.4,
         });
       });
     }
@@ -90,7 +92,7 @@ export const CompetenciesChart: React.FC<ICompetenciesChartProps> = props => {
   return (
     <Stack sx={{ width: '100vw', height: '80vh' }} align={'center'}>
       <Stack spacing={0} sx={{ width: '100vw' }}>
-        <Text pt={32} fz={'lg'} fw={700} align={'center'}>
+        <Text pt={32} fz={26} fw={800} align={'center'}>
           Динамика развития компетенций
         </Text>
         <Text mb={-56} fz={'sm'} fw={300} align={'center'}>

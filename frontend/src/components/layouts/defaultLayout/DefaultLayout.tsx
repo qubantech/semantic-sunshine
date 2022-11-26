@@ -6,8 +6,10 @@ import {
   Header as MantineHeader,
   Button,
   Affix,
-  Overlay,
+  Text,
   Loader,
+  CloseButton,
+  useMantineColorScheme,
 } from '@mantine/core';
 import { BrandReact } from 'tabler-icons-react';
 import { ColorSchemeButton } from '../../ColorSchemeButton';
@@ -20,10 +22,13 @@ import { useAllMQ } from '../../../base/hooks/useAllMQ';
 import { MobileNavItem } from './components/MobileNavItem';
 import { useEffect, useState } from 'react';
 import { LeadUsers, UserRoles, UsualUsers } from '../../../modules/user/types/UserTypes';
+import gif from './../../../assets/gifs/oops-short.gif';
 
 const DefaultLayout = observer((props: { children: JSX.Element }) => {
   const { userStore } = useRootStore();
   const { classes } = useStyles();
+
+  const { colorScheme } = useMantineColorScheme();
 
   const [navLinks, setNavLinks] = useState<NavLinkModel[] | undefined>();
 
@@ -142,9 +147,40 @@ const DefaultLayout = observer((props: { children: JSX.Element }) => {
 
   return (
     <>
-      {userStore.nothingVisible && <Overlay children={<Loader />} />}
+      {userStore.nothingVisible && (
+        <Affix position={{ top: 0, left: 0 }} onClick={() => userStore.setNothingVisible(false)}>
+          <Group
+            sx={{
+              width: '100vw',
+              height: '100vh',
+              background: colorScheme === 'dark' ? 'rgba(0, 0, 0, 0.7)' : 'rgba(255, 255, 255, 0.85)',
+              position: 'relative',
+            }}
+          >
+            <CloseButton size={40} sx={{ position: 'absolute', right: 50, top: 50 }} />
+            <Text fz={'xl'} style={{ fontFamily: 'Comic Sans MS', position: 'absolute', right: '53%', top: '27%' }}>
+              Sample text
+            </Text>
+            <Text fz={'lg'} style={{ fontFamily: 'Comic Sans MS', position: 'absolute', left: 20, top: '40%' }}>
+              Нажми на крестик, листай дальше и сделай вид что ничего не видел
+            </Text>
+            <Text fz={'lg'} style={{ fontFamily: 'Comic Sans MS', position: 'absolute', left: 20, top: '50%' }}>
+              Не подсматривай, этот раздел еще не готов.
+            </Text>
+            <img
+              src={gif}
+              style={{
+                position: 'absolute',
+                bottom: 0,
+                left: 'calc(50% - 200px)',
+                opacity: 1,
+              }}
+            />
+          </Group>
+        </Affix>
+      )}
       {renderMenu()}
-      <Container size={'xl'} pt={isMD ? 70 : 15} pb={isMD ? 15 : 75}>
+      <Container style={{ position: 'relative' }} size={'xl'} pt={isMD ? 70 : 15} pb={isMD ? 15 : 75}>
         {props.children}
       </Container>
     </>

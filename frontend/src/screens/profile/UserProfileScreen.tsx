@@ -74,7 +74,12 @@ export const UserProfileScreen = observer(() => {
           <Text fz={'xl'} fw={'600'}>
             Апдейты от лида (+2)
           </Text>
-          <Button variant={'subtle'} size={'lg'} sx={{ textDecoration: 'underline' }}>
+          <Button
+            variant={'subtle'}
+            size={'lg'}
+            sx={{ textDecoration: 'underline' }}
+            onClick={() => userStore.setNothingVisible(true)}
+          >
             Ещё
           </Button>
         </Group>
