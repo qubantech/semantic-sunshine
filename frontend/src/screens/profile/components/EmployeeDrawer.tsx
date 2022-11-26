@@ -7,26 +7,21 @@ import { useUserList, useUserReviews } from '../../../modules/user/UserFirebaseS
 interface IEmployeeDrawerProps {
   opened: boolean;
   setOpened: (a: boolean) => void;
+  title: string;
 }
 
 export const EmployeeDrawer: React.FC<IEmployeeDrawerProps> = props => {
-  const { userStore } = useRootStore();
-
-  const data = useUserReviews(
-    userStore.userInfo?.role === 'FRONTEND_LEAD' ? 'ZogeLGlMhuMkaxuD4ijLdMAfFtt1' : 'FsS4cGN5jiS9C0WwHVFB9aYK3Ad2',
-  );
-
   //Render
   return (
     <Drawer
       opened={props.opened}
       onClose={() => props.setOpened(false)}
       position={'bottom'}
-      title="Статистика"
+      title={props.title}
       padding={'lg'}
       size={'80%'}
     >
-      <CompetenciesChart data={data.watchedObject} />
+      {props.children}
     </Drawer>
   );
 };

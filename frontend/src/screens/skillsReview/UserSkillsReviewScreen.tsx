@@ -5,6 +5,7 @@ import DefaultLayout from '../../components/layouts/defaultLayout/DefaultLayout'
 import { Check, QuestionMark, Video } from 'tabler-icons-react';
 import { Button, Text, Stepper, Slider, Textarea, Card } from '@mantine/core';
 import { backendSkills, frontendSkills } from '../../components/competenciesGraph/data';
+import { UserRoles } from '../../modules/user/types/UserTypes';
 
 interface ISkillsReviewScreenProps {}
 
@@ -24,6 +25,7 @@ export const UserSkillsReviewScreen: React.FC<ISkillsReviewScreenProps> = observ
   const handleGetSkills = () => {
     switch (userStore.userInfo?.role) {
       case 'FRONTEND_USER':
+      case 'FRONTEND_LEAD':
         setSkills(frontendSkills);
         break;
       case 'BACKEND_USER':
@@ -44,20 +46,29 @@ export const UserSkillsReviewScreen: React.FC<ISkillsReviewScreenProps> = observ
   return (
     <DefaultLayout>
       <div>
-        <Text pb={32} fz={'xl'} fw={600} align={'center'}>
-          Тестирование для формирования карты компетенций
-        </Text>
-        <Stepper breakpoint={'sm'} style={{ width: '100%' }} active={activeStep}>
-          <Stepper.Step icon={<QuestionMark />} label={'Шаг 1'} description="Прохождение самооценки" />
-          <Stepper.Step icon={<Video />} label={'Шаг 2'} description="Общение с лидом" />
-          <Stepper.Step icon={<Check />} label={'Шаг 3'} description="Получение результатов и обновление компетенций" />
-        </Stepper>
-        <Card mt={32} mb={-16} shadow={'sm'} p={'lg'} radius={'md'} withBorder>
-          <Text fz={'lg'} align={'center'}>
-            Оцените свои компетенции по пятибальной шкале, где 0 - плохо (не знаю), а 5 - отлично (владею в
-            совершенстве):
-          </Text>
-        </Card>
+        {userStore.userInfo?.role !== (UserRoles.FRONTEND_LEAD || UserRoles.BACKEND_LEAD || UserRoles.DATA_LEAD) && (
+          <>
+            <Text pb={32} fz={'xl'} fw={600} align={'center'}>
+              Тестирование для формирования карты компетенций
+            </Text>
+            <Stepper breakpoint={'sm'} style={{ width: '100%' }} active={activeStep}>
+              <Stepper.Step icon={<QuestionMark />} label={'Шаг 1'} description="Прохождение самооценки" />
+              <Stepper.Step icon={<Video />} label={'Шаг 2'} description="Общение с лидом" />
+              <Stepper.Step
+                icon={<Check />}
+                label={'Шаг 3'}
+                description="Получение результатов и обновление компетенций"
+              />
+            </Stepper>
+            <Card mt={32} mb={-16} shadow={'sm'} p={'lg'} radius={'md'} withBorder>
+              <Text fz={'lg'} align={'center'}>
+                Оцените свои компетенции по пятибальной шкале, где 0 - плохо (не знаю), а 5 - отлично (владею в
+                совершенстве):
+              </Text>
+            </Card>
+          </>
+        )}
+
         {skills?.map((item, index) => (
           <div>
             <Text pt={60} pb={12} fz={'lg'}>
@@ -66,12 +77,15 @@ export const UserSkillsReviewScreen: React.FC<ISkillsReviewScreenProps> = observ
             <Slider min={1} max={5} marks={marks} defaultValue={1} showLabelOnHover={false} />
           </div>
         ))}
+
         <Text pt={60} pb={12} fz={'lg'}>
           Комментарий о прогрессе (необязательно)
         </Text>
         <Textarea rows={6} minRows={6} />
         <Button mt={25} mb={80} fullWidth size={'lg'}>
-          Отправить на рассмотрение
+          {(userStore.userInfo?.role !== (UserRoles.FRONTEND_LEAD || UserRoles.BACKEND_LEAD || UserRoles.DATA_LEAD) && (
+            <>Подтвердить</>
+          )) || <>Отправить на рассмотрение</>}
         </Button>
       </div>
     </DefaultLayout>
