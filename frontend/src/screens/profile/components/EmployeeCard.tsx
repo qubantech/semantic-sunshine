@@ -25,7 +25,7 @@ export const EmployeeCard: React.FC<IEmployeeCardProps> = props => {
       <Card shadow={'sm'} p={'lg'} radius={'md'} withBorder sx={{ width: '100%' }} onClick={onEmployeeClick}>
         <Group position={'apart'}>
           <Stack spacing={0}>
-            <Text fz={'md'} fw={600}>
+            <Text fz={'lg'} fw={600}>
               {props.firstname} {props.lastname}
             </Text>
             <Text fz={'sm'} fw={500}>

@@ -33,7 +33,7 @@ export const EmployeeTestCard: React.FC<IEmployeeTestCardProps> = props => {
       >
         <Group position={'apart'}>
           <Stack spacing={0}>
-            <Text fz={'md'} fw={600}>
+            <Text fz={'lg'} fw={600}>
               {props.firstname} {props.lastname}
             </Text>
             <Text fz={'sm'} fw={500}>
