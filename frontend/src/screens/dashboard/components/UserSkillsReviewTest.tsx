@@ -24,6 +24,7 @@ export const UserSkillsReviewTest: React.FC<IUserSkillsReviewTestProps> = observ
   const handleGetSkills = () => {
     switch (userStore.userInfo?.role) {
       case 'FRONTEND_USER':
+      case 'FRONTEND_LEAD':
         setSkills(frontendSkills);
     }
   };
