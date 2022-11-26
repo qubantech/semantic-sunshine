@@ -16,13 +16,16 @@ import { UserSkillsReviewTest } from '../dashboard/components/UserSkillsReviewTe
 const frontendUpdatesCards = [
   {
     title: 'Новая версия React',
-    description: 'Вышла новая версия React, просьба ознакомиться.',
+    shortDesc: 'Вышла новая версия React, просьба ознакомиться.',
+    description:
+      '<p>Вышла новая версия React, просьба ознакомиться.</p><p>Полезные ссылки:</p><p>-React changelog: <a href="https://github.com/facebook/react/blob/main/CHANGELOG.md">https://github.com/facebook/react/blob/main/CHANGELOG.md</a></p><p>-Видео по теме: <a href="https://www.youtube.com/watch?v=yFW6rfwoYns&t=3s">https://www.youtube.com/watch?v=yFW6rfwoYns&t=3s</a></p>',
     date: '24.11.2022',
     status: 'warning',
   },
   {
     title: 'Новый сериализатор',
-    description: 'Планируется интеграция новой модели сериализатора, просьба изучить, ссылка в источнике',
+    shortDesc: 'Планируется интеграция новой модели сериализатора',
+    description: 'Планируется интеграция новой модели сериализатора, просьба изучить, ссылка будет добавлена позже',
     date: '10.11.2022',
     status: 'danger',
   },
@@ -31,13 +34,17 @@ const frontendUpdatesCards = [
 const backendUpdatesCards = [
   {
     title: 'Новая версия NodeJS',
-    description: 'Вышла новая версия NodeJS, просьба ознакомиться.',
+    shortDesc: 'Вышла новая версия NodeJS, просьба ознакомиться',
+    description:
+      '<p>Вышла новая версия Node, просьба ознакомиться.</p><p>Полезные ссылки:</p> <p>-Видео по теме: <a href="https://www.youtube.com/watch?v=yFW6rfwoYns&t=3s">https://www.youtube.com/watch?v=yFW6rfwoYns&t=3s</a></p>',
     date: '24.11.2022',
     status: 'warning',
   },
   {
     title: 'Новый сериализатор',
-    description: 'Планируется интеграция новой модели сериализатора, просьба изучить, ссылка в источнике',
+    shortDesc: 'Планируется интеграция новой модели сериализатора',
+    description:
+      'Планируется интеграция новой модели сериализатора, просьба изучить, ссылка ссылка будет добавлена позже',
     date: '10.11.2022',
     status: 'danger',
   },
@@ -53,7 +60,7 @@ const testCards = [
 ];
 
 export const UserProfileScreen = observer(() => {
-  const { exampleStore, userStore } = useRootStore();
+  const { userStore } = useRootStore();
 
   const [openJob, setOpenJob] = useState(false);
 
@@ -104,6 +111,7 @@ export const UserProfileScreen = observer(() => {
                   <LeadUpdates
                     key={card.title}
                     title={card.title}
+                    shortDesc={card.shortDesc}
                     description={card.description}
                     date={card.date}
                     status={card.status as UpdateStatus}
@@ -115,6 +123,7 @@ export const UserProfileScreen = observer(() => {
                   <LeadUpdates
                     key={card.title}
                     title={card.title}
+                    shortDesc={card.shortDesc}
                     description={card.description}
                     date={card.date}
                     status={card.status as UpdateStatus}

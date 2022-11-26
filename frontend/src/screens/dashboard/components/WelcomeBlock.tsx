@@ -16,7 +16,7 @@ export const WelcomeBlock: React.FC<IWelcomeBlockProps> = props => {
           position: 'absolute',
           top: 0,
           left: 0,
-          width: '100vw',
+          width: '100%',
           height: '240px',
           backgroundColor: '#5c7cfa',
           borderRadius: '0 0 70px 70px',

@@ -3,8 +3,8 @@ import { observer } from 'mobx-react-lite';
 import { useRootStore } from '../../base/RootStore';
 import DefaultLayout from '../../components/layouts/defaultLayout/DefaultLayout';
 import { Check, QuestionMark, Video } from 'tabler-icons-react';
-import { Button, Card, Slider, Stepper, Text, Textarea } from '@mantine/core';
-import { frontendSkills } from '../../components/competenciesGraph/data';
+import { Button, Text, Stepper, Slider, Textarea, Card } from '@mantine/core';
+import { backendSkills, frontendSkills } from '../../components/competenciesGraph/data';
 import { UserRoles } from '../../modules/user/types/UserTypes';
 
 interface ISkillsReviewScreenProps {}
@@ -26,6 +26,10 @@ export const UserSkillsReviewScreen: React.FC<ISkillsReviewScreenProps> = observ
     switch (userStore.userInfo?.role) {
       case 'FRONTEND_USER':
         setSkills(frontendSkills);
+        break;
+      case 'BACKEND_USER':
+        setSkills(backendSkills);
+        break;
     }
   };
 

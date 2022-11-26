@@ -80,7 +80,7 @@ export const router = createBrowserRouter([
   },
   {
     path: Routes.main,
-    element: <MainScreen />,
+    element: <AuthScreen />,
   },
   {
     path: Routes.checkRole,

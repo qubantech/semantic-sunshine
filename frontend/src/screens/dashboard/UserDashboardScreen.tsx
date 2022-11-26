@@ -2,16 +2,23 @@ import React, { useState } from 'react';
 import DefaultLayout from '../../components/layouts/defaultLayout/DefaultLayout';
 import { CompetenciesGraph } from '../../components/competenciesGraph/CompetenciesGraph';
 import { Group, Space, Text } from '@mantine/core';
-import { frontendSkills, frontendSkillsRate } from '../../components/competenciesGraph/data';
-import { CompetenciesCard } from './components/CompetenciesCard';
+import {
+  backendSkills,
+  backendSkillsRate,
+  frontendSkills,
+  frontendSkillsRate,
+} from '../../components/competenciesGraph/data';
 import { CompetenciesChart } from './components/CompetenciesChart';
 import { useRootStore } from '../../base/RootStore';
 import { useUserReviews } from '../../modules/user/UserFirebaseService';
 import { WelcomeBlock } from './components/WelcomeBlock';
+import { CommonBar } from '../../components/commonBar/CommonBar';
+import { useAllMQ } from '../../base/hooks/useAllMQ';
 
 interface IUserDashboardScreenProps {}
 
 export const UserDashboardScreen: React.FC<IUserDashboardScreenProps> = () => {
+  const { isSM } = useAllMQ();
   const { userStore } = useRootStore();
   const [opened, setOpened] = useState<boolean>(false);
 
@@ -28,19 +35,25 @@ export const UserDashboardScreen: React.FC<IUserDashboardScreenProps> = () => {
   return (
     <DefaultLayout>
       <>
-        <div style={{ marginBottom: 180 }}>
+        <div style={{ marginBottom: 80 }}>
           <WelcomeBlock toggleCard={handleToggleDrawer} name={userStore.userInfo?.firstName || null} />
-          <Group sx={{ height: '60vh' }} position={'center'}>
+          <Group position={'center'}>
             <CompetenciesChart data={reviews.watchedObject} />
           </Group>
-          <Space h={120} />
+          <Group>
+            <CommonBar />
+          </Group>
         </div>
         <CompetenciesGraph
           opened={opened}
-          title={'Карта компетенций Junior Front-end разработчика'}
+          title={
+            userStore.userInfo?.role === 'FRONTEND_USER'
+              ? 'Карта компетенций Junior Front-end разработчика (React)'
+              : 'Карта компетенций Junior Back-end разработчика (Java)'
+          }
           setOpened={() => setOpened(false)}
-          skills={frontendSkills}
-          skillsRate={frontendSkillsRate}
+          skills={userStore.userInfo?.role === 'FRONTEND_USER' ? frontendSkills : backendSkills}
+          skillsRate={userStore.userInfo?.role === 'FRONTEND_USER' ? frontendSkillsRate : backendSkillsRate}
         />
       </>
     </DefaultLayout>

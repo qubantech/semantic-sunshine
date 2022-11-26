@@ -1,16 +1,31 @@
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Button, Divider, Group, LoadingOverlay, Space, Text, TextInput, Stack, Box } from '@mantine/core';
+import {
+  Button,
+  Divider,
+  Group,
+  LoadingOverlay,
+  Space,
+  Text,
+  TextInput,
+  Stack,
+  Box,
+  ActionIcon,
+  useMantineColorScheme,
+} from '@mantine/core';
 import { DeviceAnalytics, Lock, Mail, School, User } from 'tabler-icons-react';
 import { auth } from '../../../base/firebase/firebase-config';
 import { useRootStore } from '../../../base/RootStore';
 import { Routes } from '../../../routes/routes';
+import logo from '../../../assets/icons/logo.png';
 
 export const LoginComponent = () => {
   const { userStore } = useRootStore();
 
   const [signInWithEmailAndPassword, user, loading, error] = useSignInWithEmailAndPassword(auth);
+
+  const { colorScheme } = useMantineColorScheme();
 
   /*  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');*/
@@ -67,6 +82,17 @@ export const LoginComponent = () => {
   const renderAuthButtons = () => {
     return (
       <Stack justify={'center'} spacing={0} sx={{ height: '100vh' }}>
+        <Group pb={16} position={'center'} align={'center'}>
+          <img
+            style={{ filter: colorScheme === 'dark' ? 'invert(100%)' : undefined }}
+            src={logo}
+            width={40}
+            height={40}
+          />
+          <Text fz={40} fw={600}>
+            Studify
+          </Text>
+        </Group>
         <Box mb={200}>
           <Text fz={'lg'} pb={8}>
             Отдел Frontend
