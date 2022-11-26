@@ -15,14 +15,14 @@ const frontendEmployeesCards = [
     lastname: 'Выравнивателевич',
     role: 'Frontend React',
     date: '10.11.2022',
-    checked: true,
+    checked: false,
   },
   {
     firstname: 'Антон',
     lastname: 'Центрователевич',
     role: 'Frontend React',
     date: '10.11.2022',
-    checked: false,
+    checked: true,
   },
 ];
 
@@ -32,14 +32,14 @@ const backendEmployeesCards = [
     lastname: 'Бэкэндович',
     role: 'Backend Java',
     date: '10.11.2022',
-    checked: true,
+    checked: false,
   },
   {
     firstname: 'Григорий',
     lastname: 'Джавович',
     role: 'Backend Java',
     date: '10.11.2022',
-    checked: false,
+    checked: true,
   },
 ];
 
@@ -55,11 +55,11 @@ export const LeadProfileScreen: React.FC<ILeadProfileScreenProps> = observer(() 
       teamLead={null}
     >
       <>
-        <Button mt={20} size={'md'} variant={'outline'} fullWidth>
+        <Button mt={20} size={'lg'} variant={'outline'} fullWidth>
           Создать апдейт
         </Button>
-        <Text fz={'lg'} fw={'600'} my={30}>
-          Сотрудники
+        <Text fz={'xl'} fw={'600'} mt={40} mb={20}>
+          Сотрудники (2)
         </Text>
         <Group>
           {userStore.userInfo?.role === UserRoles.BACKEND_LEAD
@@ -70,10 +70,10 @@ export const LeadProfileScreen: React.FC<ILeadProfileScreenProps> = observer(() 
                 return <EmployeeCard firstname={card.firstname} lastname={card.lastname} role={card.role} />;
               })}
         </Group>
-        <Text fz={'lg'} fw={'600'} mt={30} mb={0}>
+        <Text fz={'xl'} fw={'600'} mt={30} mb={0}>
           Анкеты
         </Text>
-        <Text fz={'xs'} fw={'600'} mb={30} color={'red'}>
+        <Text fz={'md'} fw={'600'} mb={30} color={'red'}>
           Есть требующие проверки
         </Text>
         <Group>

@@ -18,11 +18,11 @@ export const ProfileLayout: React.FC<IProfileProps> = observer(props => {
   return (
     <DefaultLayout>
       <>
-        <Group position={'apart'} mb={10}>
-          <div style={{ paddingLeft: 0 }}>
+        <Group position={'right'} mb={10}>
+          <Group>
             <ColorSchemeButton />
-          </div>
-          <LogoutButton />
+            <LogoutButton />
+          </Group>
         </Group>
         <Card shadow={'sm'} p={'lg'} radius={'md'} withBorder>
           <Group align={'start'}>
@@ -34,7 +34,7 @@ export const ProfileLayout: React.FC<IProfileProps> = observer(props => {
               <Text fz={'xl'} tt="uppercase" fw={600}>
                 {props.lastname}
               </Text>
-              <Stack spacing={0} mt={15} sx={{ maxWidth: '240px' }}>
+              <Stack spacing={0} mt={15} sx={{ maxWidth: '220px' }}>
                 <Text fz={'md'}>
                   <span style={{ fontWeight: 600 }}>Позиция:</span> {props.role}
                 </Text>
