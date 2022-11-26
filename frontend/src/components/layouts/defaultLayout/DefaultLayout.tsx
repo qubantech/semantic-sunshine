@@ -142,7 +142,11 @@ const DefaultLayout = observer((props: { children: JSX.Element }) => {
 
   return (
     <>
-      {userStore.nothingVisible && <Overlay children={<Loader />} />}
+      {userStore.nothingVisible && (
+        <Affix position={{ bottom: 0, right: '50%' }} onClick={() => userStore.setNothingVisible(false)}>
+          content
+        </Affix>
+      )}
       {renderMenu()}
       <Container size={'xl'} pt={isMD ? 70 : 15} pb={isMD ? 15 : 75}>
         {props.children}

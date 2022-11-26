@@ -80,6 +80,8 @@ export const CompetenciesChart: React.FC<ICompetenciesChartProps> = props => {
           borderColor: color,
           backgroundColor: color,
           hidden: index && true,
+          cubicInterpolationMode: 'monotone',
+          tension: 0.4,
         });
       });
     }
