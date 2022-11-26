@@ -179,3 +179,21 @@ export const frontendSkills = [
 ];
 
 export const frontendSkillsRate = [4, 3, 3, 2, 1, 1, 3, 3, 4, 3, 2, 3, 1, 0];
+
+export const backendSkills = [
+  'Java Core',
+  'Spring Boot',
+  'Spring Framework',
+  'Spring MVC',
+  'Rest API',
+  'SQL',
+  'Docker',
+  'Доп. навыки',
+  'HTML + CSS + JS',
+  'Kubernetes',
+  'Git',
+  'ООП',
+  'Docker',
+];
+
+export const backendSkillsRate = [3, 2, 1, 2, 1, 1, 3, 3, 4, 3, 2, 3, 1, 0];

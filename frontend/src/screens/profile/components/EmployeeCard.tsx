@@ -14,7 +14,6 @@ export const EmployeeCard: React.FC<IEmployeeCardProps> = props => {
 
   //Handlers
   const onEmployeeClick = () => {
-    console.log(opened);
     setOpened(true);
   };
 

@@ -4,7 +4,7 @@ import { useRootStore } from '../../base/RootStore';
 import DefaultLayout from '../../components/layouts/defaultLayout/DefaultLayout';
 import { Check, QuestionMark, Video } from 'tabler-icons-react';
 import { Button, Text, Stepper, Slider, Textarea, Card } from '@mantine/core';
-import { frontendSkills } from '../../components/competenciesGraph/data';
+import { backendSkills, frontendSkills } from '../../components/competenciesGraph/data';
 
 interface ISkillsReviewScreenProps {}
 
@@ -25,6 +25,10 @@ export const UserSkillsReviewScreen: React.FC<ISkillsReviewScreenProps> = observ
     switch (userStore.userInfo?.role) {
       case 'FRONTEND_USER':
         setSkills(frontendSkills);
+        break;
+      case 'BACKEND_USER':
+        setSkills(backendSkills);
+        break;
     }
   };
 
