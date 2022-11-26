@@ -9,6 +9,7 @@ import {
   Text,
   Loader,
   CloseButton,
+  useMantineColorScheme,
 } from '@mantine/core';
 import { BrandReact } from 'tabler-icons-react';
 import { ColorSchemeButton } from '../../ColorSchemeButton';
@@ -26,6 +27,8 @@ import gif from './../../../assets/gifs/oops-short.gif';
 const DefaultLayout = observer((props: { children: JSX.Element }) => {
   const { userStore } = useRootStore();
   const { classes } = useStyles();
+
+  const { colorScheme } = useMantineColorScheme();
 
   const [navLinks, setNavLinks] = useState<NavLinkModel[] | undefined>();
 
@@ -146,7 +149,14 @@ const DefaultLayout = observer((props: { children: JSX.Element }) => {
     <>
       {userStore.nothingVisible && (
         <Affix position={{ top: 0, left: 0 }} onClick={() => userStore.setNothingVisible(false)}>
-          <Group sx={{ width: '100vw', height: '100vh', background: 'rgba(0, 0, 0, 0.7)', position: 'relative' }}>
+          <Group
+            sx={{
+              width: '100vw',
+              height: '100vh',
+              background: colorScheme === 'dark' ? 'rgba(0, 0, 0, 0.7)' : 'rgba(255, 255, 255, 0.85)',
+              position: 'relative',
+            }}
+          >
             <CloseButton size={40} sx={{ position: 'absolute', right: 50, top: 50 }} />
             <Text fz={'xl'} style={{ fontFamily: 'Comic Sans MS', position: 'absolute', right: '53%', top: '27%' }}>
               Sample text
