@@ -89,12 +89,12 @@ export const LoginComponent = () => {
             width={40}
             height={40}
           />
-          <Text fz={40} fw={600}>
+          <Text fz={42} fw={600}>
             Studify
           </Text>
         </Group>
-        <Box mb={200}>
-          <Text fz={'lg'} pb={8}>
+        <Box mb={100}>
+          <Text fz={'md'} pb={4}>
             Отдел Frontend
           </Text>
           <Group grow>
@@ -106,7 +106,7 @@ export const LoginComponent = () => {
             </Button>
           </Group>
 
-          <Text fz={'lg'} pt={32} pb={8}>
+          <Text fz={'md'} pt={20} pb={4}>
             Отдел Backend
           </Text>
           <Group grow>
