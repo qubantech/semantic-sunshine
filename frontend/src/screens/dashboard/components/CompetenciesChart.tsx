@@ -90,13 +90,13 @@ export const CompetenciesChart: React.FC<ICompetenciesChartProps> = props => {
 
   //Render
   return (
-    <Stack sx={{ width: '90vw' }} align={'center'}>
-      <Stack spacing={0} sx={{ width: '90vw' }}>
-        <Text pt={32} fz={26} fw={800} align={'center'}>
+    <Stack mt={50} spacing={0} sx={{ width: '90vw' }}>
+      <Stack mb={-20} spacing={10} sx={{ width: '90vw' }}>
+        <Text fz={26} fw={600} style={{ lineHeight: 1 }}>
           Динамика развития компетенций
         </Text>
-        <Text mb={-56} fz={'sm'} fw={300} align={'center'}>
-          (выберите нужные параметры, чтобы отразить их на графике)
+        <Text fz={'sm'} fw={300} style={{ lineHeight: 1 }}>
+          Выберите нужные параметры, чтобы отразить их на графике
         </Text>
       </Stack>
       {chartData ? <Line height={350} options={options} data={chartData} /> : <Loader />}

@@ -20,7 +20,7 @@ export const EmployeeDrawer: React.FC<IEmployeeDrawerProps> = props => {
           <Text fz={'xl'} fw={600}>
             {props.title}
           </Text>
-          {props.employmentTime && <Text fz={'md'}>Работает с {props.employmentTime}</Text>}
+          {props.employmentTime && <Text fz={'md'}>Работник на предприятии с {props.employmentTime}</Text>}
         </Stack>
       }
       padding={'lg'}

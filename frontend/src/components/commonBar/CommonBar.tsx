@@ -1,7 +1,7 @@
 import React from 'react';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
-import { Text } from '@mantine/core';
+import { Text, Stack } from '@mantine/core';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
@@ -39,12 +39,15 @@ export const CommonBar: React.FC<ICommonBarProps> = () => {
   //Render
   return (
     <div style={{ width: '90vw', height: '50vh', marginBottom: 50 }}>
-      <Text pt={40} fz={26} fw={800} align={'center'}>
-        Средний уровень компетенций для Junior разработчиков
-      </Text>
-      <Text pb={16} fz={'sm'} fw={300} align={'center'}>
-        (выбраны все специалисты данной сферы)
-      </Text>
+      <Stack spacing={10} mb={10}>
+        <Text pt={40} fz={26} fw={600} style={{ lineHeight: 1 }}>
+          Средний уровень компетенций для Junior разработчиков
+        </Text>
+        <Text pb={16} fz={'sm'} fw={300}>
+          *Выбраны все специалисты данной сферы
+        </Text>
+      </Stack>
+
       <Bar height={170} options={options} data={data} />
     </div>
   );

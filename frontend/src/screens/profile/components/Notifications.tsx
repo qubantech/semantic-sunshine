@@ -11,16 +11,15 @@ export const Notifications = () => {
   const DATA = [
     {
       title: 'Хабр.Карьера',
-      description: 'Вышло новое исследование на Хабр.Карьера',
+      description: 'Опубликована новая статистика.',
       time: 'Сегодня 11:12',
       link: 'Подробнее',
     },
     {
-      title: 'Мусорка по адресу "Красноармейская 3" уже более 12 часов заполнена.',
-      description:
-        'Ситуация уже стоит на контроле. В частности рекомендуем увеличить количество людей вблизи этого направления.',
+      title: 'HeadHunter',
+      description: 'Загляните в новые рекомендации!',
       time: 'Вчера 23:12',
-      link: 'Подробности',
+      link: 'Подробнее',
     },
   ];
 
@@ -36,7 +35,7 @@ export const Notifications = () => {
     link: string;
   }) => {
     return (
-      <Card shadow={'md'} withBorder style={{ cursor: 'pointer' }}>
+      <Card shadow={'lg'} withBorder style={{ cursor: 'pointer' }}>
         <Text size={'md'} weight={700} style={{ lineHeight: '1.1' }}>
           {title}
         </Text>
@@ -46,13 +45,15 @@ export const Notifications = () => {
         <Text size={'xs'} my={5} c={'dimmed'}>
           {time}
         </Text>
-        <Button size={'sm'}>{link}</Button>
+        <Button size={'xs'} mt={15}>
+          {link}
+        </Button>
       </Card>
     );
   };
 
   return (
-    <Popover opened={opened} onClose={() => setOpened(false)} width={330} position="bottom" withArrow>
+    <Popover shadow={'xl'} opened={opened} onClose={() => setOpened(false)} width={330} position="bottom" withArrow>
       <Popover.Target>
         <ActionIcon color={'indigo'} onClick={() => setOpened(o => !o)}>
           <Bell />

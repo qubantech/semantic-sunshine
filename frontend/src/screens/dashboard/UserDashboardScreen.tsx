@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import DefaultLayout from '../../components/layouts/defaultLayout/DefaultLayout';
 import { CompetenciesGraph } from '../../components/competenciesGraph/CompetenciesGraph';
-import { Group, Space, Text } from '@mantine/core';
+import { Group, Card, Text, Stack, Drawer } from '@mantine/core';
 import {
   backendSkills,
   backendSkillsRate,
@@ -22,6 +22,8 @@ export const UserDashboardScreen: React.FC<IUserDashboardScreenProps> = () => {
   const { userStore } = useRootStore();
   const [opened, setOpened] = useState<boolean>(false);
 
+  const [recsOpened, setRecsOpened] = useState(false);
+
   const reviews = useUserReviews(userStore.userUid);
 
   console.log(reviews);
@@ -37,6 +39,44 @@ export const UserDashboardScreen: React.FC<IUserDashboardScreenProps> = () => {
       <>
         <div style={{ marginBottom: 80 }}>
           <WelcomeBlock toggleCard={handleToggleDrawer} name={userStore.userInfo?.firstName || null} />
+
+          <Text my={20} fz={26} fw={600} style={{ lineHeight: 1 }}>
+            Рекомендуем изучить
+          </Text>
+
+          <Stack>
+            <Card
+              shadow={'sm'}
+              p={'lg'}
+              radius={'md'}
+              withBorder
+              sx={{ width: '100%', boxShadow: '5px 5px 5px rgba(92, 124, 250, 0.5)' }}
+            >
+              <Text fz={'lg'} fw={500}>
+                {userStore.userInfo?.role === 'FRONTEND_USER' ? 'MobX' : 'noSQL'}
+              </Text>
+              <Text>Используется в 15% открытых вакансий</Text>
+              <Text mt={10}>
+                <a style={{ textDecoration: 'underline' }}>Документация</a>
+              </Text>
+            </Card>
+            <Card
+              shadow={'sm'}
+              p={'lg'}
+              radius={'md'}
+              withBorder
+              sx={{ width: '100%', boxShadow: '5px 5px 5px rgba(92, 124, 250, 0.5)' }}
+            >
+              <Text fz={'lg'} fw={500}>
+                {userStore.userInfo?.role === 'FRONTEND_USER' ? 'WebSockets' : 'Методология CI/CD'}
+              </Text>
+              <Text>Используется в 10% открытых вакансий</Text>
+              <Text mt={10}>
+                <a style={{ textDecoration: 'underline' }}>Документация</a>
+              </Text>
+            </Card>
+          </Stack>
+
           <Group position={'center'}>
             <CompetenciesChart data={reviews.watchedObject} />
           </Group>
