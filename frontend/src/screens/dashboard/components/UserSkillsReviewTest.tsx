@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useRootStore } from '../../../base/RootStore';
-import { frontendSkills } from '../../../components/competenciesGraph/data';
+import { backendSkills, frontendSkills } from '../../../components/competenciesGraph/data';
 import { observer } from 'mobx-react-lite';
 import { Button, Slider, Text, Textarea, Stack } from '@mantine/core';
 
@@ -26,6 +26,9 @@ export const UserSkillsReviewTest: React.FC<IUserSkillsReviewTestProps> = observ
       case 'FRONTEND_USER':
       case 'FRONTEND_LEAD':
         setSkills(frontendSkills);
+      case 'BACKEND_USER':
+      case 'BACKEND_LEAD':
+        setSkills(backendSkills);
     }
   };
 
