@@ -22,8 +22,6 @@ export const UserDashboardScreen: React.FC<IUserDashboardScreenProps> = () => {
   const { userStore } = useRootStore();
   const [opened, setOpened] = useState<boolean>(false);
 
-  const [recsOpened, setRecsOpened] = useState(false);
-
   const reviews = useUserReviews(userStore.userUid);
 
   console.log(reviews);
