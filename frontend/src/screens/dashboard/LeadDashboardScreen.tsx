@@ -1,15 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import DefaultLayout from '../../components/layouts/defaultLayout/DefaultLayout';
 import { observer } from 'mobx-react-lite';
 import { Group, Text } from '@mantine/core';
 import { UserRoles } from '../../modules/user/types/UserTypes';
 import { EmployeeTestCard } from '../profile/components/EmployeeTestCard';
 import { useRootStore } from '../../base/RootStore';
+import { WelcomeBlock } from './components/WelcomeBlock';
+import {
+  backendSkills,
+  backendSkillsRate,
+  frontendSkills,
+  frontendSkillsRate,
+} from '../../components/competenciesGraph/data';
+import { CompetenciesGraph } from '../../components/competenciesGraph/CompetenciesGraph';
 
 interface ILeadDashboardScreenProps {}
 
 export const LeadDashboardScreen: React.FC<ILeadDashboardScreenProps> = observer(() => {
   const { userStore } = useRootStore();
+
+  const [opened, setOpened] = useState(false);
 
   const frontendEmployeesCards = {
     checked: [
@@ -81,10 +91,16 @@ export const LeadDashboardScreen: React.FC<ILeadDashboardScreenProps> = observer
     ],
   };
 
+  //Handlers
+  const handleToggleDrawer = () => {
+    setOpened(!opened);
+  };
+
   //Render
   return (
     <DefaultLayout>
       <>
+        <WelcomeBlock toggleCard={handleToggleDrawer} name={userStore.userInfo?.firstName || null} />
         <Text fz={'xl'} fw={'600'} mt={40} mb={20}>
           Непроверенные анкеты
         </Text>
@@ -143,6 +159,27 @@ export const LeadDashboardScreen: React.FC<ILeadDashboardScreenProps> = observer
                 );
               })}
         </Group>
+
+        <CompetenciesGraph
+          opened={opened}
+          role={userStore.userInfo?.role}
+          title={
+            userStore.userInfo?.role === 'FRONTEND_USER' || userStore.userInfo?.role === 'FRONTEND_LEAD'
+              ? 'Карта компетенций Junior Front-end разработчика (React)'
+              : 'Карта компетенций Junior Back-end разработчика (Java)'
+          }
+          setOpened={() => setOpened(false)}
+          skills={
+            userStore.userInfo?.role === 'FRONTEND_USER' || userStore.userInfo?.role === 'FRONTEND_LEAD'
+              ? frontendSkills
+              : backendSkills
+          }
+          skillsRate={
+            userStore.userInfo?.role === 'FRONTEND_USER' || userStore.userInfo?.role === 'FRONTEND_LEAD'
+              ? frontendSkillsRate
+              : backendSkillsRate
+          }
+        />
       </>
     </DefaultLayout>
   );

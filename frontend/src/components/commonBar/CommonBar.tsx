@@ -47,7 +47,6 @@ export const CommonBar: React.FC<ICommonBarProps> = () => {
           *Выбраны все специалисты данной сферы
         </Text>
       </Stack>
-
       <Bar height={170} options={options} data={data} />
     </div>
   );

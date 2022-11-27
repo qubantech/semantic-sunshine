@@ -1,4 +1,5 @@
 import { createStyles, Card, Text, Title, Button, List } from '@mantine/core';
+import { useRootStore } from '../../../base/RootStore';
 
 const useStyles = createStyles(theme => ({
   card: {
@@ -33,6 +34,8 @@ interface ArticleCardImageProps {
 }
 
 export function StudentSellingCard({ image, title, category, pros, buttonLabel }: ArticleCardImageProps) {
+  const { userStore } = useRootStore();
+
   const { classes } = useStyles();
 
   return (
@@ -63,7 +66,14 @@ export function StudentSellingCard({ image, title, category, pros, buttonLabel }
           })}
         </List>
       </div>
-      <Button size={'md'} variant={'filled'} sx={{ minWidth: '150px' }}>
+      <Button
+        size={'md'}
+        variant={'filled'}
+        sx={{ minWidth: '150px' }}
+        onClick={() => {
+          userStore.setNothingVisible(true);
+        }}
+      >
         {buttonLabel}
       </Button>
     </Card>

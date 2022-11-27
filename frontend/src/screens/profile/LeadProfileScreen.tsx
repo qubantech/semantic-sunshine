@@ -5,7 +5,6 @@ import { observer } from 'mobx-react-lite';
 import { useRootStore } from '../../base/RootStore';
 import { UserRoles } from '../../modules/user/types/UserTypes';
 import { EmployeeCard } from './components/EmployeeCard';
-import { EmployeeTestCard } from './components/EmployeeTestCard';
 
 interface ILeadProfileScreenProps {}
 
@@ -55,7 +54,7 @@ export const LeadProfileScreen: React.FC<ILeadProfileScreenProps> = observer(() 
       teamLead={null}
     >
       <>
-        <Button mt={20} size={'lg'} variant={'outline'} fullWidth>
+        <Button mt={20} size={'lg'} variant={'outline'} fullWidth onClick={() => userStore.setNothingVisible(true)}>
           Создать апдейт
         </Button>
         <Text fz={'xl'} fw={'600'} mt={40} mb={20}>

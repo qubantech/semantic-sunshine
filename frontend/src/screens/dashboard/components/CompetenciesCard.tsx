@@ -12,7 +12,7 @@ export const CompetenciesCard: React.FC<ICompetenciesCardProps> = props => {
   //Render
   return (
     <div>
-      <Card shadow={'sm'} p={'lg'} sx={{ width: '100%', borderRadius: '15px' }} onClick={setOpened}>
+      <Card shadow={'sm'} p={'md'} sx={{ borderRadius: '15px' }} onClick={setOpened}>
         <Group position={'center'} align={'center'}>
           <Graph />
           <Text size={'lg'}>Карта компетенций</Text>
