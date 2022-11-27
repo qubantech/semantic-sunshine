@@ -55,24 +55,25 @@ export const LeadUpdates: React.FC<ILeadUpdatesProps> = props => {
         onClose={handleToggleDrawer}
         position={'bottom'}
         title={
-          <Text size={'xl'} fw={700}>
+          <Text size={'xl'} fw={600}>
             {props.title}
           </Text>
         }
         padding={'lg'}
         size={'50%'}
       >
-        <Group grow spacing={8}>
-          <Button size={'lg'} color={'red'} leftIcon={<QuestionMark />} onClick={handleOpen}>
+        <TypographyStylesProvider>
+          <div style={{ fontSize: 16, lineHeight: 1.3 }} dangerouslySetInnerHTML={{ __html: props.description }} />
+        </TypographyStylesProvider>
+
+        <Group grow spacing={8} mt={30}>
+          <Button size={'md'} color={'red'} leftIcon={<QuestionMark />} onClick={handleOpen}>
             Есть вопросы
           </Button>
-          <Button size={'lg'} color={'green'} leftIcon={<Check />} onClick={handleOpen}>
+          <Button size={'md'} color={'green'} leftIcon={<Check />} onClick={handleOpen}>
             Изучено
           </Button>
         </Group>
-        <TypographyStylesProvider pt={16}>
-          <div style={{ fontSize: 18 }} dangerouslySetInnerHTML={{ __html: props.description }} />
-        </TypographyStylesProvider>
       </Drawer>
     </>
   );
