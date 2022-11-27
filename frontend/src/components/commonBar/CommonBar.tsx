@@ -38,7 +38,7 @@ export const CommonBar: React.FC<ICommonBarProps> = () => {
 
   //Render
   return (
-    <div style={{ width: '90vw', height: '50vh', marginBottom: 50 }}>
+    <div style={{ width: '90vw', marginBottom: 0 }}>
       <Text pt={40} fz={26} fw={800} align={'center'}>
         Средний уровень компетенций для Junior разработчиков
       </Text>

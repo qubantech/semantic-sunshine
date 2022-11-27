@@ -1,6 +1,7 @@
 import React from 'react';
 import { Group, Text } from '@mantine/core';
 import { CompetenciesCard } from './CompetenciesCard';
+import { useRootStore } from '../../../base/RootStore';
 
 interface IWelcomeBlockProps {
   toggleCard: () => void;
@@ -8,6 +9,8 @@ interface IWelcomeBlockProps {
 }
 
 export const WelcomeBlock: React.FC<IWelcomeBlockProps> = props => {
+  const { userStore } = useRootStore();
+
   //Render
   return (
     <div style={{ height: '240px' }}>
@@ -28,10 +31,12 @@ export const WelcomeBlock: React.FC<IWelcomeBlockProps> = props => {
       </Text>
       <Group position={'center'}>
         <Text align={'center'} style={{ width: '70%', lineHeight: 1.2 }} fz={18}>
-          Готова свежая карта компетенций! Проверь сейчас!
+          {userStore.userInfo?.role === 'FRONTEND_LEAD' || userStore.userInfo?.role === 'BACKEND_LEAD'
+            ? 'Обновлены рекомендации для карты компетенций! Проверь сейчас!'
+            : 'Готова свежая карта компетенций! Проверь сейчас!'}
         </Text>
       </Group>
-      <Group pt={30} px={65} grow>
+      <Group pt={30} px={45} grow>
         <CompetenciesCard setOpened={props.toggleCard} />
       </Group>
     </div>

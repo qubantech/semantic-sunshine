@@ -40,7 +40,7 @@ export const UserDashboardScreen: React.FC<IUserDashboardScreenProps> = () => {
           <Group position={'center'} pt={32}>
             <CompetenciesChart data={reviews.watchedObject} />
           </Group>
-          <Group>
+          <Group pt={32}>
             <CommonBar />
           </Group>
         </div>
